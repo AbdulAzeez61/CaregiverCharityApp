@@ -37,11 +37,12 @@ class CreatePayment : AppCompatActivity() {
         if (entryData != null) {
             binding.tvTitle.setText(entryData.entryTitle)
             binding.tvType.setText(entryData.entryType)
-        }
-        if (entryData?.entryType != null) {
-            binding.monthly.visibility = View.GONE
-            binding.onetime.visibility = View.GONE
-            paymentType = "One Time"
+
+            if (entryData.entryType == "") {
+                binding.monthly.visibility = View.GONE
+                binding.onetime.visibility = View.GONE
+                paymentType = "One Time"
+            }
         }
 
         binding.monthly.setOnClickListener {
