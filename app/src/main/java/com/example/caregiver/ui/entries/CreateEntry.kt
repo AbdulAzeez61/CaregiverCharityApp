@@ -23,7 +23,11 @@ import com.example.caregiver.ui.model.EntryData
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -34,7 +38,7 @@ class CreateEntry : AppCompatActivity() {
     private lateinit var binding: ActivityCreateEntryBinding
     private val REQUEST_CODE_PICK_IMAGES = 7
     private lateinit var firebaseAuth: FirebaseAuth
-    private var userId: String?=null
+    private var userId: String? = null
     private lateinit var databaseReference: DatabaseReference
 
 
@@ -44,11 +48,10 @@ class CreateEntry : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
-        var user = firebaseAuth?.currentUser
+        var user = firebaseAuth.currentUser
         userId = user?.uid
 
-        databaseReference =
-            FirebaseDatabase.getInstance().getReference("Users").child(userId!!)
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId!!)
 
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -69,8 +72,8 @@ class CreateEntry : AppCompatActivity() {
 
                     binding.createButton.text = "Set up Fundraiser"
 
-                    binding.campaignType.setVisibility(View.GONE)
-                    binding.campaignTypeLabel.setVisibility(View.GONE)
+                    binding.campaignType.visibility = View.GONE
+                    binding.campaignTypeLabel.visibility = View.GONE
                 }
 
 
@@ -155,9 +158,7 @@ class CreateEntry : AppCompatActivity() {
             uploadedimageUrls.add(uri.toString())
         }
 
-        databaseReference =
-            FirebaseDatabase.getInstance()
-                .getReference("Entry Info")
+        databaseReference = FirebaseDatabase.getInstance().getReference("Entry Info")
         val newEntryRef = databaseReference.push()
         val entryKey = newEntryRef.key
         val entry = EntryData(
@@ -178,6 +179,10 @@ class CreateEntry : AppCompatActivity() {
             binding.campaignGoal.text.clear()
             binding.viewPager.removeAllViews()
             Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this@CreateEntry, AllEntries::class.java)
+            startActivity(intent)
+            finish()
         }.addOnFailureListener {
             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
         }

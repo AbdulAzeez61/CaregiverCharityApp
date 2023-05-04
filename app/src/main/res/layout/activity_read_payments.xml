@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.payments.ReadPayments">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="70dp"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:id="@+id/payView"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_alignBottom="@+id/recyclerView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="-52dp" />
+
+
+</RelativeLayout>

@@ -8,9 +8,7 @@ import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +16,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
@@ -51,7 +50,7 @@ class UpdateEntries : AppCompatActivity() {
 
 
         firebaseAuth = FirebaseAuth.getInstance()
-        var user = firebaseAuth?.currentUser
+        var user = firebaseAuth.currentUser
         val userId = user?.uid
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId!!)
@@ -60,15 +59,15 @@ class UpdateEntries : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val userRole = dataSnapshot.child("role").getValue(String::class.java)
                 // Do something with userRole
-                if(userRole != null && userRole == "Individual"){
+                if (userRole != null && userRole == "Individual") {
                     binding.updatePageTitle.text = "Revise Fundraiser"
 
-                    binding.campaignTypeLabel.setVisibility(View.GONE)
-                    binding.entryType.setVisibility(View.GONE)
+                    binding.campaignTypeLabel.visibility = View.GONE
+                    binding.entryType.visibility = View.GONE
 
-                    binding.goal.text="Target amount"
+                    binding.goal.text = "Target amount"
 
-                    binding.date.text ="Target date"
+                    binding.date.text = "Target date"
 
                     binding.reviseButton.text = "Revise fundraiser"
                 }
@@ -125,7 +124,8 @@ class UpdateEntries : AppCompatActivity() {
         viewPager.adapter = adapter
 
         binding.reviseButton.setOnClickListener {
-            val remoteImages = entryData.entryImages.filter { it.startsWith("https://") }.toMutableList()
+            val remoteImages =
+                entryData.entryImages.filter { it.startsWith("https://") }.toMutableList()
             val storageReference = FirebaseStorage.getInstance().getReference("campaign images")
             if (localImages.isNotEmpty()) {
                 val uploadTasks = mutableListOf<Task<Uri>>()
@@ -156,9 +156,7 @@ class UpdateEntries : AppCompatActivity() {
 
     private fun updateCampaignEntry(remoteImages: MutableList<String>) {
         val entryData = intent.getParcelableExtra<EntryData>("entrydata")
-        databaseReference =
-            FirebaseDatabase.getInstance()
-                .getReference("Entry Info")
+        databaseReference = FirebaseDatabase.getInstance().getReference("Entry Info")
         val entryRef = databaseReference.child(entryData!!.entryKey!!)
         val entryType = binding.entryType.text.toString()
         val entryTitle = binding.entryTitle.text.toString()
@@ -202,14 +200,12 @@ class UpdateEntries : AppCompatActivity() {
                             binding.entryDesc.text.clear()
                             binding.entryGoal.text.clear()
                             binding.viewPager.removeAllViews()
-                            Toast.makeText(this@UpdateEntries, "Updated", Toast.LENGTH_SHORT)
-                                .show()
+                            Toast.makeText(this@UpdateEntries, "Updated", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@UpdateEntries, AllEntries::class.java)
                             startActivity(intent)
                             finish()
                         }.addOnFailureListener { e ->
-                            Toast.makeText(this@UpdateEntries, "Failed", Toast.LENGTH_SHORT)
-                                .show()
+                            Toast.makeText(this@UpdateEntries, "Failed", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.payments.CreatePayment">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="19dp"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:singleLine="true"
+        android:text="Title of the campaign"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/tvType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="19dp"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:singleLine="true"
+        android:text="Type of the campaign"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/tvProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="19dp"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:singleLine="true"
+        android:text="Amount reached for the goal"
+        android:textSize="20sp" />
+
+
+    <EditText
+        android:id="@+id/createAmount"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="start|center_vertical"
+        android:hint="Payment amount"
+
+        android:inputType="number"
+        android:padding="16dp" />
+
+
+    <LinearLayout
+        android:id="@+id/linearFrame4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="19dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/monthly"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:paddingStart="25dp"
+            android:paddingTop="17dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="17dp"
+            android:singleLine="true"
+            android:text="Monthly"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/onetime"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:paddingStart="25dp"
+            android:paddingTop="17dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="17dp"
+            android:singleLine="true"
+            android:text="One time"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/donAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:cornerRadius="10dp" />
+
+    <TextView
+        android:id="@+id/amountView"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:cornerRadius="10dp" />
+
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:text="Payment"
+        android:textSize="18sp"
+        app:cornerRadius="10dp" />
+
+    <Button
+        android:id="@+id/readButton"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#E12424"
+        android:text="Read payment"
+        android:textSize="18sp"
+        app:cornerRadius="10dp" />
+
+
+</LinearLayout>

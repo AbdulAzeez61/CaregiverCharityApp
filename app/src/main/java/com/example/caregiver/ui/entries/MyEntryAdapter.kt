@@ -1,4 +1,5 @@
 package com.example.caregiver.ui.entries
+
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -15,13 +16,14 @@ import com.example.caregiver.R
 import com.example.caregiver.ui.model.EntryData
 import com.google.firebase.database.FirebaseDatabase
 
-class MyEntryAdapter (private val context: Context, private var dataList: List<EntryData>) :
+class MyEntryAdapter(private val context: Context, private var dataList: List<EntryData>) :
     RecyclerView.Adapter<MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.recycler_item_entries, parent, false)
         return MyViewHolder(view)
     }
+
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         if (dataList[position].entryImages.isNotEmpty()) {
             Glide.with(context).load(dataList[position].entryImages[0]).into(holder.recEntryImage)
@@ -45,7 +47,8 @@ class MyEntryAdapter (private val context: Context, private var dataList: List<E
             context.startActivity(intent)
         }
 
-        holder.removeButton.setOnClickListener{
+
+        holder.removeButton.setOnClickListener {
             val databaseReference = FirebaseDatabase.getInstance().getReference("Entry Info")
             val key = dataList[position].entryKey
             if (key != null) {
@@ -68,7 +71,7 @@ class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var recCardCampaign: CardView
     val updateButton: Button
     val viewCampaignButton: Button
-    val removeButton : Button
+    val removeButton: Button
 
     init {
         recEntryImage = itemView.findViewById(R.id.recEntryImage)
