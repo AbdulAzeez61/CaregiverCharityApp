@@ -45,6 +45,9 @@ class EntryDetails : AppCompatActivity() {
             binding.username.text= user!!.displayName
 
         }
+        if(EntryData!!.entryType==""){
+            binding.entryType.visibility = View.GONE
+        }
         binding.username.movementMethod = LinkMovementMethod.getInstance()
         binding.DonateButton.setOnClickListener {
             val intent = Intent(this, CreatePayment::class.java)
