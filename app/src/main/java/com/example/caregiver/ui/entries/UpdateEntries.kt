@@ -62,13 +62,7 @@ class UpdateEntries : AppCompatActivity() {
                 if (userRole != null && userRole == "Individual") {
                     binding.updatePageTitle.text = "Revise Fundraiser"
 
-                    binding.campaignTypeLabel.visibility = View.GONE
                     binding.entryType.visibility = View.GONE
-
-                    binding.goal.text = "Target amount"
-
-                    binding.date.text = "Target date"
-
                     binding.reviseButton.text = "Revise fundraiser"
                 }
             }
@@ -194,11 +188,11 @@ class UpdateEntries : AppCompatActivity() {
                     // Update the database with the new values
                     if (updates.isNotEmpty()) {
                         entryRef.updateChildren(updates).addOnSuccessListener {
-                            binding.entryTitle.text.clear()
-                            binding.entryType.text.clear()
-                            binding.entryclosingdate.text.clear()
-                            binding.entryDesc.text.clear()
-                            binding.entryGoal.text.clear()
+                            binding.entryTitle.text?.clear()
+                            binding.entryType.text?.clear()
+                            binding.entryclosingdate.text?.clear()
+                            binding.entryDesc.text?.clear()
+                            binding.entryGoal.text?.clear()
                             binding.viewPager.removeAllViews()
                             Toast.makeText(this@UpdateEntries, "Updated", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@UpdateEntries, AllEntries::class.java)

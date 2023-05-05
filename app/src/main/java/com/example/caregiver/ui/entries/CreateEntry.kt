@@ -60,24 +60,9 @@ class CreateEntry : AppCompatActivity() {
 
                 if (userRole != null && userRole == "Individual") {
                     binding.SetUp.text = "Set up Fundraiser"
-
-                    binding.title.text = "Fundraiser Title"
-                    binding.campaignTitle.hint = "Enter fundraiser title"
-
-                    binding.goal.text = "Fundraiser Target"
-                    binding.campaignGoal.hint = "Enter fundrasier target amount"
-
-                    binding.date.text = "Target Date"
-                    binding.date.hint = "Enter target date"
-
-                    binding.createButton.text = "Set up Fundraiser"
-
                     binding.campaignType.visibility = View.GONE
-                    binding.campaignTypeLabel.visibility = View.GONE
+                    binding.createButton.text = "Set up Fundraiser"
                 }
-
-
-                // Do something with userRole
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -172,12 +157,12 @@ class CreateEntry : AppCompatActivity() {
             entryGoal
         )
         newEntryRef.setValue(entry).addOnSuccessListener {
-            binding.campaignTitle.text.clear()
-            binding.campaignType.text.clear()
-            binding.campaignclosingdate.text.clear()
-            binding.campaignDesc.text.clear()
-            binding.campaignGoal.text.clear()
-            binding.viewPager.removeAllViews()
+//            binding.campaignTitle.text.clear()
+//            binding.campaignType.text?.clear()
+//            binding.campaignclosingdate.text.clear()
+//            binding.campaignDesc.text.clear()
+//            binding.campaignGoal.text.clear()
+//            binding.viewPager.removeAllViews()
             Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this@CreateEntry, AllEntries::class.java)

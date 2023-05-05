@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.entries.CreateEntry">
 
     <LinearLayout
@@ -20,93 +20,159 @@
             android:layout_height="wrap_content"
             android:text="Set up Campaign" />
 
-        <TextView
-            android:id="@+id/campaignTypeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Campaign Type" />
 
-        <EditText
-            android:id="@+id/campaignType"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="Enter campaign type"
-            android:inputType="text"
-            android:minHeight="48dp" />
+            android:layout_marginBottom="18sp"
+            android:inputType="text">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Campaign Title" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campaignType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter campaign type"
+                android:inputType="text"
+             />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/campaignTitle"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="Enter campaign Title"
-            android:inputType="text"
-            android:minHeight="48dp" />
+            android:layout_marginBottom="18sp"
+            android:inputType="text">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Campaign Goal"
-            android:id="@+id/goal"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campaignTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title"
+                android:inputType="text"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/campaignGoal"
+
+<!--        <EditText-->
+<!--            android:id="@+id/campaignTitle"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:autofillHints=""-->
+<!--            android:hint="Enter campaign Title"-->
+<!--            android:inputType="text"-->
+<!--            android:minHeight="48dp" />-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="Enter campaign Goal"
-            android:inputType="number"
-            android:minHeight="48dp" />
+            android:layout_marginBottom="18sp"
+            android:inputType="text">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Closing date"
-            android:id="@+id/date"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campaignGoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Setup Up A Target"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/campaignclosingdate"
+<!--        -->
+<!--        <EditText-->
+<!--            android:id="@+id/campaignGoal"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:autofillHints=""-->
+<!--            android:hint="Enter campaign Goal"-->
+<!--            android:inputType="number"-->
+<!--            android:minHeight="48dp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/date"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Closing date" />-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:clickable="false"
-            android:cursorVisible="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:hint="Enter closing date"
-            android:minHeight="48dp" />
+            android:layout_marginBottom="18sp"
+            android:inputType="text">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Description" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campaignclosingdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Select closing date" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/campaignDesc"
+<!--        <EditText-->
+<!--            android:id="@+id/campaignclosingdate"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:autofillHints=""-->
+<!--            android:clickable="false"-->
+<!--            android:cursorVisible="false"-->
+<!--            android:focusable="false"-->
+<!--            android:focusableInTouchMode="false"-->
+<!--            android:hint="Enter closing date"-->
+<!--            android:minHeight="48dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Description" />-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter description"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:minHeight="48dp" />
+            android:layout_marginBottom="18sp"
+            android:inputType="text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campaignDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter description"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+             />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+<!--        <EditText-->
+<!--            android:id="@+id/campaignDesc"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Enter description"-->
+<!--            android:importantForAutofill="no"-->
+<!--            android:inputType="text"-->
+<!--            android:minHeight="48dp" />-->
+        <Button
+            android:id="@+id/selectImagesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Images" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="200dp" />
 
-        <Button
-            android:id="@+id/selectImagesButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Images" />
+<!--        <Button-->
+<!--            android:id="@+id/selectImagesButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Select Images" />-->
 
         <Button
             android:id="@+id/createButton"
@@ -116,4 +182,4 @@
 
 
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

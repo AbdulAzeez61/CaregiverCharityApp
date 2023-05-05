@@ -95,9 +95,9 @@ class DashboardFragment : Fragment() {
                         Log.d("DashboardFragment", "This is the raised amiunt inside $totalRaisedAmount")
                     }
 
-
-                    binding.raised.text =
-                        "Rs.${totalRaisedAmount.roundToInt()}"
+//                     return null pointer exception when create account
+//                    binding.raised.text =
+//                        "Rs.${totalRaisedAmount.roundToInt()}"
                 }
 //                override fun onDataChange(snapshot: DataSnapshot) {
 //                    Log.d("DashboardFragment", "Snapshot 2: $snapshot")
