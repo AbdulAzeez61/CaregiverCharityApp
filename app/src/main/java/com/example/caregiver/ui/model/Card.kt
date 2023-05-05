@@ -1,3 +1,3 @@
 package com.example.caregiver.ui.model
 
-data class Card(val image: Int, val header: String)
+data class Card(val image: String, val header: String, val description: String)

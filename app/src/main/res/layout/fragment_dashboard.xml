@@ -9,26 +9,26 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
+            android:background="@color/background_blue"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="25dp"
+            android:paddingBottom="30dp">
 
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileImg"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:src="@drawable/profileimg"
                 app:civ_border_color="#E42424"
-                app:civ_border_width="2dp"
-                android:src="@drawable/profileimg" />
+                app:civ_border_width="3dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,162 +37,159 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Holla,"
-                    android:textSize="14sp" />
+                <!--                <TextView-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="8dp"-->
+                <!--                    android:layout_marginTop="8dp"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:text="Holla,"-->
+                <!--                    android:textSize="14sp" />-->
 
                 <TextView
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Holla,"
-                    android:textSize="20sp" />
+                    android:gravity="center"
+                    android:text="loading"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="jhonmoore@gmail.com"
+                    android:gravity="center"
+                    android:text="loading"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Manage"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:padding="10dp"
-            android:background="@drawable/side_nav_bar"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/side_nav_bar"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="My Total Contribution"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/contribution"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rs.0"
+                    android:textAlignment="center"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/side_nav_bar"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Total Raise"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/raised"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rs.0"
+                    android:textAlignment="center"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="My Total Contribution"
-                android:textAlignment="center"
-                android:textSize="20sp" />
+                android:text="Manage"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <TextView
+            <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Rs.0"
-                android:textAlignment="center"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:id="@+id/contribution"/>
+                android:layout_height="match_parent"
+                android:columnCount="2"
+                android:rowCount="2"
+                android:useDefaultMargins="false">
 
+                <Button
+                    android:id="@+id/projects"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="My Projects" />
+
+                <Button
+                    android:id="@+id/createProject"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="Create" />
+
+                <Button
+                    android:id="@+id/account"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="Profile" />
+
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="Profile" />
+
+
+            </GridLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:padding="10dp"
-            android:background="@drawable/side_nav_bar"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Total Raise"
-                android:textAlignment="center"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Rs.0"
-                android:textAlignment="center"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:id="@+id/raised"/>
-
-        </LinearLayout>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Manage"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:columnCount="2"
-            android:rowCount="2"
-            android:useDefaultMargins="false"
-            >
-
-            <Button
-                android:id="@+id/projects"
-                android:layout_width="100dp"
-                android:layout_marginBottom="0dp"
-                android:layout_height="100dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_margin="4dp"
-                android:text="My Projects" />
-
-            <Button
-                android:id="@+id/createProject"
-                android:layout_width="100dp"
-                android:layout_marginBottom="0dp"
-                android:layout_height="100dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_margin="4dp"
-                android:text="Create" />
-
-            <Button
-                android:id="@+id/account"
-                android:layout_width="100dp"
-                android:layout_marginBottom="0dp"
-                android:layout_height="97dp"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_margin="4dp"
-                android:text="Profile" />
-
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="0dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_margin="4dp"
-                android:text="Settings" />
-
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="0dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_margin="4dp"
-                android:text="History" />
-
-        </GridLayout>
-
-
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

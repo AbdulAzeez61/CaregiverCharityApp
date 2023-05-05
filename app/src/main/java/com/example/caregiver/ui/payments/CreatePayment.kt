@@ -144,7 +144,7 @@ class CreatePayment : AppCompatActivity() {
             Log.d("CreatePayment","This is the data+${cpays.toString()}")
             databaseReference.child(payID).setValue(cpays).addOnSuccessListener {
 
-                binding.createAmount.text.clear()
+                binding.createAmount.text?.clear()
 
 
                 Toast.makeText(this, "Payment success", Toast.LENGTH_SHORT).show()

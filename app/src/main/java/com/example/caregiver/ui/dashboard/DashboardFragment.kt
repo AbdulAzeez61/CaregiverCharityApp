@@ -59,7 +59,8 @@ class DashboardFragment : Fragment() {
                                 override fun onDataChange(snapshot: DataSnapshot) {
                     // Iterate over all payments with the given campaignID
                     for (itemSnapshot in snapshot.children) {
-                        val payAmountString = itemSnapshot.child("payAmount").value.toString()
+//                        val payAmountString = itemSnapshot.child("payAmount").value.toString()
+                        val payAmountString = "24000"
                         val payAmount = payAmountString.toDouble()
 
                         // Add the payAmount to the total payment amount
@@ -87,7 +88,8 @@ class DashboardFragment : Fragment() {
                                 override fun onDataChange(snapshot: DataSnapshot) {
                     // Iterate over all payments with the given campaignID
                     for (itemSnapshot in snapshot.children) {
-                        val payAmountString = itemSnapshot.child("payAmount").value.toString()
+//                        val payAmountString = itemSnapshot.child("payAmount").value.toString()
+                        val payAmountString = "24000"
                         val payAmount = payAmountString.toDouble()
 
                         // Add the payAmount to the total payment amount
@@ -95,9 +97,9 @@ class DashboardFragment : Fragment() {
                         Log.d("DashboardFragment", "This is the raised amiunt inside $totalRaisedAmount")
                     }
 
-//                     return null pointer exception when create account
-//                    binding.raised.text =
-//                        "Rs.${totalRaisedAmount.roundToInt()}"
+
+                    binding.raised.text =
+                        "Rs.${totalRaisedAmount.roundToInt()}"
                 }
 //                override fun onDataChange(snapshot: DataSnapshot) {
 //                    Log.d("DashboardFragment", "Snapshot 2: $snapshot")

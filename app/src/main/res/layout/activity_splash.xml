@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="160dp"
         android:text="@string/appname"
+        android:textColor="@color/logo_color"
+        android:gravity="center"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

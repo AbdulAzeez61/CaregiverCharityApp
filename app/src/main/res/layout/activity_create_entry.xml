@@ -16,8 +16,12 @@
 
         <TextView
             android:id="@+id/SetUp"
-            android:layout_width="wrap_content"
+            android:textColor="@color/primary_blue"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
             android:text="Set up Campaign" />
 
 
@@ -161,6 +165,9 @@
             android:id="@+id/selectImagesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft= "8sp"
+            android:paddingRight= "8sp"
+            android:background="@drawable/rounded_button"
             android:text="Select Images" />
 
         <androidx.viewpager.widget.ViewPager
@@ -177,7 +184,9 @@
         <Button
             android:id="@+id/createButton"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:padding= "12sp"
+            android:background="@drawable/rounded_button"
             android:text="Setup Campaign" />
 
 

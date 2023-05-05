@@ -15,6 +15,7 @@
 
     <TextView
         android:layout_width="match_parent"
+        android:textColor='@color/logo_color'
         android:layout_height="wrap_content"
         android:text="Care Giver"
         android:textSize= "18sp"
@@ -29,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Welcome Back"
+        android:textColor="#0029FF"
         android:textStyle= "bold"
         android:layout_marginBottom="10sp"
         android:textSize="32sp"
@@ -37,6 +39,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#3354ff"
         android:text="Together lets make the world better place"
         android:textSize="26sp"
         />
@@ -48,6 +51,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#0029FF"
         android:text="@string/login"
         android:layout_marginBottom="20sp"
         android:textStyle="bold"
@@ -88,16 +92,27 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password"
+        android:textSize="16sp"
+        />
+
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
-        android:padding="12sp"
+        android:padding="8sp"
         android:text="@string/signin"
+        android:background="@drawable/rounded_button"
         android:layout_height="wrap_content"
    />
 
     <TextView
         android:id="@+id/redirectSignUp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Don't have an accournt? Sign Up"

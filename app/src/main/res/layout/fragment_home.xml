@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:queryHint="Search"
         android:layout_margin="20dp"
+        android:background="@drawable/border_rad"
         />
 
     <androidx.recyclerview.widget.RecyclerView

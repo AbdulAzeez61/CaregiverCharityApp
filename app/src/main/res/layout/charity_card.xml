@@ -30,10 +30,13 @@
                 android:id="@+id/header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/secondry_black"
+                android:textStyle="bold"
                 android:text="Help a cild to go to school"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 />
             <TextView
+                android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -49,15 +52,24 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_thumb_up_24" />
+                app:srcCompat="@drawable/like_prev"
+                android:layout_marginRight="10dp"
+                android:contentDescription="TODO" />
 
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/share" />
 
             <View
                 android:layout_width="0dp"
@@ -65,11 +77,14 @@
                 android:layout_weight="1" />
 
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_share_24" />
+                android:text="Donate"
+                android:textColor="#45b6fe"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
 
         </LinearLayout>
 

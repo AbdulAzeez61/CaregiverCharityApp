@@ -18,4 +18,5 @@
     <string name="lastName">Last Name</string>
     <string name="phoneNo">Mobile Number</string>
     <string name="update">update</string>
+    <string name="paymentAmount">Payment Amount</string>
 </resources>
