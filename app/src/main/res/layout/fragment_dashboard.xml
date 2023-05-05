@@ -91,10 +91,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="25 000 LKR"
+                android:text="Rs.0"
                 android:textAlignment="center"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:id="@+id/contribution"/>
 
         </LinearLayout>
 
@@ -117,10 +118,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="40 000 LKR"
+                android:text="Rs.0"
                 android:textAlignment="center"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:id="@+id/raised"/>
 
         </LinearLayout>
 

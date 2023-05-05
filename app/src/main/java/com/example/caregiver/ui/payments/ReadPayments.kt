@@ -49,23 +49,6 @@ class ReadPayments : AppCompatActivity() {
         dialog.show()
         val paymView = binding.payView
 
-//        eventListener= databaseReference!!.addValueEventListener(object: ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                dataList.clear()
-//
-//                for(itemSnapshot in snapshot.children){
-//                    val dataClass = itemSnapshot.getValue(CampPay::class.java)
-//
-//                    if(dataClass!=null){
-//                        dataList.add(dataClass)
-//                    }
-//
-//                }
-//
-//                adapter.notifyDataSetChanged()
-//                dialog.dismiss()
-//            }
-
         eventListener = query?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 dataList.clear()
@@ -120,8 +103,6 @@ class ReadPayments : AppCompatActivity() {
                     Log.e(ContentValues.TAG, "Failed to read value.", error.toException())
                 }
             })
-
-
     }
 }
 

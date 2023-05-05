@@ -1,10 +1,12 @@
 package com.example.caregiver.ui.entries
 
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -17,11 +19,18 @@ import com.example.caregiver.databinding.ActivityEntryDetailsBinding
 import com.example.caregiver.ui.model.EntryData
 import com.example.caregiver.ui.payments.CreatePayment
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlin.math.roundToInt
 
 class EntryDetails : AppCompatActivity() {
 
     private lateinit var binding: ActivityEntryDetailsBinding
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var databaseReference:DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +57,39 @@ class EntryDetails : AppCompatActivity() {
         if(EntryData!!.entryType==""){
             binding.entryType.visibility = View.GONE
         }
+
+        val campaignID = EntryData?.entryKey //hardcode
+        var totalPaymentAmount = 0.0
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Payment")
+
+        databaseReference?.orderByChild("cid")?.equalTo(campaignID)
+            ?.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    // Iterate over all payments with the given campaignID
+                    for (itemSnapshot in snapshot.children) {
+                        val payAmountString = itemSnapshot.child("payAmount").value.toString()
+                        val payAmount = payAmountString.toDouble()
+
+                        // Add the payAmount to the total payment amount
+                        totalPaymentAmount += payAmount
+                    }
+
+
+                    binding.tvProgress.text =
+                        "Rs.${totalPaymentAmount.roundToInt()} raised"
+
+                    // Display the total payment amount for the given campaignID
+                    Log.d(
+                        ContentValues.TAG,
+                        "Total payment amount for campaign $campaignID: $totalPaymentAmount"
+                    )
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e(ContentValues.TAG, "Failed to read value.", error.toException())
+                }
+            })
         binding.username.movementMethod = LinkMovementMethod.getInstance()
         binding.DonateButton.setOnClickListener {
             val intent = Intent(this, CreatePayment::class.java)
