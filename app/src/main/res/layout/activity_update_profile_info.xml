@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:textColor="@color/primary_blue"
             android:text="Update Profile Infomation"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -133,6 +134,8 @@
             android:id="@+id/btnUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary_blue"
+            app:cornerRadius="6dp"
             android:padding="12sp"
             android:text="@string/update" />
 

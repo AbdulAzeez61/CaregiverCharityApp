@@ -139,6 +139,7 @@
                 android:layout_height="wrap_content"
                 android:text="Manage"
                 android:textSize="16sp"
+                android:textColor="@color/secondry_black"
                 android:textStyle="bold" />
 
             <GridLayout
@@ -155,6 +156,7 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
+                    android:backgroundTint="@color/primary_red"
                     android:layout_marginBottom="0dp"
                     android:text="My Projects" />
 
@@ -165,6 +167,7 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
+                    android:backgroundTint="@color/primary_red"
                     android:layout_marginBottom="0dp"
                     android:text="Create" />
 
@@ -175,6 +178,7 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
+                    android:backgroundTint="@color/primary_red"
                     android:layout_marginBottom="0dp"
                     android:text="Profile" />
 
@@ -184,8 +188,9 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
+                    android:backgroundTint="@color/primary_red"
                     android:layout_marginBottom="0dp"
-                    android:text="Profile" />
+                    android:text="Payment History" />
 
 
             </GridLayout>

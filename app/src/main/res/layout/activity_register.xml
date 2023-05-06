@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Care Giver"
+        android:textColor='@color/logo_color'
         android:textSize= "18sp"
         android:textStyle="bold"
         />
@@ -29,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Join Today"
+        android:textColor="#3354ff"
         android:textStyle= "bold"
         android:layout_marginBottom="10sp"
         android:textSize="32sp"
@@ -38,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Let's make the world better place"
+        android:textColor="#3354ff"
         android:textSize="26sp"
         />
 
@@ -52,6 +55,7 @@
         android:textStyle="bold"
         android:textSize="24sp"
         android:gravity="center"
+        android:textColor="@color/primary_blue"
         />
 
 <!--    <TextView-->
@@ -131,14 +135,18 @@
         android:padding="12sp"
         android:text="@string/signup"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary_blue"
+        app:cornerRadius="6dp"
         />
 
     <TextView
         android:id="@+id/redirectSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Already have an accournt? Sign In"
+        android:text="Already have an account? Sign In"
         android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_blue"
         android:gravity="center"
         />
 

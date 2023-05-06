@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:textColor="#3354ff"
         android:text="Together lets make the world better place"
-        android:textSize="26sp"
+        android:textSize="25sp"
         />
 
     <View
@@ -51,8 +51,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#0029FF"
         android:text="@string/login"
+        android:textColor="@color/primary_blue"
         android:layout_marginBottom="20sp"
         android:textStyle="bold"
         android:textSize="24sp"
@@ -98,15 +98,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Forgot Password"
+        android:textStyle="bold"
+        android:textColor="@color/primary_blue"
         android:textSize="16sp"
         />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
-        android:padding="8sp"
+        android:padding="12sp"
         android:text="@string/signin"
-        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/primary_blue"
+        app:cornerRadius="6dp"
         android:layout_height="wrap_content"
    />
 
@@ -115,7 +118,9 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Don't have an accournt? Sign Up"
+        android:textColor="@color/primary_blue"
+        android:text="Don't have an account? Sign Up"
+        android:textStyle="bold"
         android:textSize="16sp"
         android:gravity="center"
         />

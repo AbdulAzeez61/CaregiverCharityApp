@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,6 +12,30 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            tools:ignore="ExtraText,UselessParent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:theme="@style/ThemeOverlay.MaterialComponents.Light">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFFF"
+                    app:navigationIcon="@drawable/ic_arrow_back_24"
+                    app:popupTheme="@style/Theme.Caregiver.PopupOverlay" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+        </LinearLayout>
+
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
@@ -21,8 +46,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:padding="15dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progress_bar"
@@ -33,51 +58,51 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginBottom="15dp"
-                >
-<!--                                <TextView-->
-<!--                                    android:layout_width="wrap_content"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:text="From Rs.40,000.00 raised Rs.2580.00"-->
-<!--                                    android:textStyle="bold"-->
-<!--                                    android:textColor="@color/primary_red"-->
-<!--                                    android:textSize="16sp" />-->
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From Rs.40,000.00 raised Rs.2580.00"
+                    android:textColor="@color/primary_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginBottom="15dp"
-                >
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="From Rs."
-                    android:textStyle="bold"
+                    android:text="From "
                     android:textColor="@color/primary_red"
-                    android:textSize="16sp" />
-                <TextView
-                    android:id="@+id/entryGoal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Goal"
-                    android:textStyle="bold"
-                    android:textColor="@color/primary_red"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
                 <TextView
                     android:id="@+id/tvProgress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textStyle="bold"
                     android:textColor="@color/primary_red"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-
+                <TextView
+                    android:id="@+id/entryGoal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Goal"
+                    android:textColor="@color/primary_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -94,16 +119,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginBottom="15dp"
-                >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="created by "
-                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/username"
                     android:layout_width="wrap_content"
@@ -114,12 +140,11 @@
             </LinearLayout>
 
 
-
             <TextView
                 android:id="@+id/entryDesc"
-                android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:text="Description"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
@@ -127,33 +152,33 @@
 
             <TextView
                 android:id="@+id/entryType"
-                android:layout_marginBottom="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:text="Type"
                 android:textSize="24sp" />
-
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Closing Date "
-                    android:textColor= "@color/black"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/entryclosingdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor= "@color/black"
                     android:text="Closing Date"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -162,8 +187,10 @@
                 android:id="@+id/DonateButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_button_red"
-                android:text="Donate" />
+                android:backgroundTint="@color/primary_red"
+                android:padding="12sp"
+                android:text="Donate"
+                app:cornerRadius="6dp" />
 
         </LinearLayout>
     </LinearLayout>

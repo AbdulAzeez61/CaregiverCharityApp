@@ -5,165 +5,195 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingRight="15dp"
-    android:paddingLeft="15dp"
     tools:context=".ui.payments.CreatePayment">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="19dp"
-        android:ellipsize="end"
-        android:gravity="center_horizontal"
-        android:singleLine="true"
-        android:textStyle= "bold"
-        android:textColor= "@color/secondry_black"
-        android:text="Title of the campaign"
-        android:textSize="22sp" />
-
-    <TextView
-        android:id="@+id/tvType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="19dp"
-        android:ellipsize="end"
-        android:gravity="center_horizontal"
-        android:singleLine="true"
-        android:textColor= "@color/secondry_black"
-        android:text="Type of the campaign"
-        android:textSize="18sp" />
-
-
-    <TextView
-        android:id="@+id/tvProgress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="From Rs.40,000.00 raised Rs.2580.00"
-        android:textStyle="bold"
-        android:textColor="@color/primary_red"
-        android:textSize="16sp"
-        android:gravity="center"
-        />
-
-
-<!--    <EditText-->
-<!--        android:id="@+id/createAmount"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:layout_marginStart="10dp"-->
-<!--        android:layout_marginTop="30dp"-->
-<!--        android:layout_marginEnd="10dp"-->
-<!--        android:gravity="start|center_vertical"-->
-<!--        android:hint="Payment amount"-->
-
-<!--        android:inputType="number"-->
-<!--        android:padding="16dp" />-->
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginTop="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="18sp">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/createAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/paymentAmount"
-        android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
     <LinearLayout
-        android:id="@+id/linearFrame4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="19dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:ignore="ExtraText,UselessParent">
 
-        <Button
-            android:id="@+id/monthly"
-            android:layout_width="140dp"
-            android:layout_height="70dp"
-            android:layout_marginRight="20dp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:lineSpacingExtra="4dp"
-            android:paddingStart="25dp"
-            android:paddingTop="17dp"
-            android:paddingEnd="24dp"
-            android:paddingBottom="17dp"
-            android:singleLine="true"
-            android:text="Monthly"
-            android:textAllCaps="false" />
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Light">
 
-        <Button
-            android:id="@+id/onetime"
-            android:layout_width="140dp"
-            android:layout_height="70dp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:lineSpacingExtra="4dp"
-            android:paddingStart="25dp"
-            android:paddingTop="17dp"
-            android:paddingEnd="24dp"
-            android:paddingBottom="17dp"
-            android:singleLine="true"
-            android:text="One time"
-            android:textAllCaps="false" />
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFF"
+                app:navigationIcon="@drawable/ic_arrow_back_24"
+                app:popupTheme="@style/Theme.Caregiver.PopupOverlay" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding= "15dp"
+            tools:ignore="ExtraText,UselessParent"
+            >
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="19dp"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:singleLine="true"
+                android:text="Title of the campaign"
+                android:textColor="@color/secondry_black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="19dp"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:singleLine="true"
+                android:text="Type of the campaign"
+                android:textColor="@color/secondry_black"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/tvProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="From Rs.40,000.00 raised Rs.2580.00"
+                android:textColor="@color/primary_red"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <!--    <EditText-->
+            <!--        android:id="@+id/createAmount"-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="60dp"-->
+            <!--        android:layout_marginStart="10dp"-->
+            <!--        android:layout_marginTop="30dp"-->
+            <!--        android:layout_marginEnd="10dp"-->
+            <!--        android:gravity="start|center_vertical"-->
+            <!--        android:hint="Payment amount"-->
+
+            <!--        android:inputType="number"-->
+            <!--        android:padding="16dp" />-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="18sp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/createAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/paymentAmount"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearFrame4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="19dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/monthly"
+                    android:layout_width="140dp"
+                    android:layout_height="70dp"
+                    android:layout_marginRight="20dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lineSpacingExtra="4dp"
+                    android:paddingStart="25dp"
+                    android:paddingTop="17dp"
+                    android:paddingEnd="24dp"
+                    android:paddingBottom="17dp"
+                    android:singleLine="true"
+                    android:text="Monthly"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/onetime"
+                    android:layout_width="140dp"
+                    android:layout_height="70dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lineSpacingExtra="4dp"
+                    android:paddingStart="25dp"
+                    android:paddingTop="17dp"
+                    android:paddingEnd="24dp"
+                    android:paddingBottom="17dp"
+                    android:singleLine="true"
+                    android:text="One time"
+                    android:textAllCaps="false" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/donAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+
+                android:textAlignment="center"
+                android:textSize="30sp"
+                app:cornerRadius="10dp" />
+
+            <TextView
+                android:id="@+id/amountView"
+                android:layout_width="350dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textAlignment="center"
+                android:textSize="40sp"
+                app:cornerRadius="10dp" />
+
+            <Button
+                android:id="@+id/createButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12sp"
+                android:text="Confirm Payment"
+                android:textSize="14sp"
+                app:cornerRadius="6dp" />
+
+            <Button
+                android:id="@+id/readButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#E12424"
+                android:padding="12sp"
+                android:text="My Payments"
+                android:textSize="14sp"
+                app:cornerRadius="6dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
-    <TextView
-        android:id="@+id/donAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:cornerRadius="10dp" />
-
-    <TextView
-        android:id="@+id/amountView"
-        android:layout_width="350dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        app:cornerRadius="10dp" />
-
-    <Button
-        android:id="@+id/createButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12sp"
-        android:text="Confirm Payment"
-        android:textSize="14sp"
-        app:cornerRadius="6dp" />
-
-    <Button
-        android:id="@+id/readButton"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:backgroundTint="#E12424"
-        android:padding="12sp"
-        android:text="My Payments"
-        android:textSize="14sp"
-        app:cornerRadius="6dp" />
-
 
 </LinearLayout>

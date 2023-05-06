@@ -10,15 +10,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Care Giver"
-            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/primary_blue"
+            android:text="One more step to go"
+            android:textSize="32sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/primary_blue"
+            android:text="Tell us more about you"
+            android:textSize="24sp" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -34,21 +44,6 @@
                 android:hint="@string/frstName"
                 android:inputType="text" />
 
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="I am a"
-            android:orientation="horizontal">
-
-            <AutoCompleteTextView
-                android:id="@+id/userRoleSelect"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -68,10 +63,26 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="I am a"
+            android:orientation="horizontal">
+
+            <AutoCompleteTextView
+                android:id="@+id/userRoleSelect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
         <com.hbb20.CountryCodePicker
             android:id="@+id/countryCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             app:ccp_autoDetectCountry="true"
             app:ccp_showFlag="true"
             app:ccp_showNameCode="true"
@@ -129,19 +140,18 @@
 
         </RadioGroup>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select your birthday" />
-
         <DatePicker
             android:id="@+id/birthDay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:datePickerMode="spinner"
             android:calendarViewShown="false"
-            android:spinnersShown="true"
-            />
+            android:datePickerMode="spinner"
+            android:spinnersShown="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select your birthday" />
 
 
         <Button
@@ -149,6 +159,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12sp"
+            android:backgroundTint="@color/primary_blue"
+            app:cornerRadius="6dp"
             android:text="Complete" />
 
 

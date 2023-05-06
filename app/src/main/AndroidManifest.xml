@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Caregiver"
         tools:targetApi="31">
         <activity
+            android:name=".Verify_Phone"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
             android:name=".ui.entries.AllEntriesByUserName"
             android:exported="false" />
         <activity

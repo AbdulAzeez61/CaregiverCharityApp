@@ -43,12 +43,13 @@ class MainActivity : AppCompatActivity() {
 //        val userId = user?.uid
         val email = user?.email
         val profileImg = user?.photoUrl
+        val displayName = user?.displayName
 
         if (profileImg != null) {
             Glide.with(this).load(profileImg).into(myProfileImg)
         }
         userEmail.setText(email)
-
+        username.setText(displayName)
         setSupportActionBar(binding.appBarMain.toolbar)
 
 //        binding.appBarMain.fab.setOnClickListener { view ->
