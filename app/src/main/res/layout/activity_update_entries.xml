@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="Set up Campaign"
+                android:text="Revise Campaign"
                 android:textColor="@color/primary_blue"
                 android:textSize="24sp"
                 android:textStyle="bold" />
