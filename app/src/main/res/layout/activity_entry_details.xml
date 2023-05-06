@@ -55,20 +55,20 @@
                 android:layout_height="wrap_content" />
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="15dp"-->
+<!--                android:orientation="horizontal">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="From Rs.40,000.00 raised Rs.2580.00"
-                    android:textColor="@color/primary_red"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="From Rs.40,000.00 raised Rs.2580.00"-->
+<!--                    android:textColor="@color/primary_red"-->
+<!--                    android:textSize="16sp"-->
+<!--                    android:textStyle="bold" />-->
+<!--            </LinearLayout>-->
 
 
             <LinearLayout

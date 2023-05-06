@@ -26,13 +26,9 @@ import com.example.caregiver.ui.model.EntryData
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
-import java.util.Locale
+import java.util.*
 
 class UpdateEntries : AppCompatActivity() {
 
@@ -148,7 +144,7 @@ class UpdateEntries : AppCompatActivity() {
         }
     }
 
-    private fun updateCampaignEntry(remoteImages: MutableList<String>) {
+    fun updateCampaignEntry(remoteImages: MutableList<String>) {
         val entryData = intent.getParcelableExtra<EntryData>("entrydata")
         databaseReference = FirebaseDatabase.getInstance().getReference("Entry Info")
         val entryRef = databaseReference.child(entryData!!.entryKey!!)

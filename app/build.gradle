@@ -18,7 +18,15 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    testOptions {
+        testOptions {
+            animationsDisabled true
+            unitTests.returnDefaultValues = true
+        }
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -61,6 +69,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'com.github.aabhasr1:OtpView:v1.1.2-ktx' // kotlin
     implementation 'com.github.aabhasr1:OtpView:v1.1.2'
+    implementation 'androidx.test:core-ktx:1.5.0'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
 //    implementation 'androidx.core:core-ktx:+'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testImplementation 'junit:junit:4.13.2'
@@ -69,5 +79,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'com.google.firebase:firebase-storage-ktx:20.2.0'
     testImplementation 'org.mockito:mockito-core:3.12.4'
+    testImplementation 'org.robolectric:robolectric:4.9'
 
 }
