@@ -59,8 +59,8 @@ class DashboardFragment : Fragment() {
                                 override fun onDataChange(snapshot: DataSnapshot) {
                     // Iterate over all payments with the given campaignID
                     for (itemSnapshot in snapshot.children) {
-//                        val payAmountString = itemSnapshot.child("payAmount").value.toString()
-                        val payAmountString = "24000"
+                        val payAmountString = itemSnapshot.child("payAmount").value.toString()
+//                        val payAmountString = "24000"
                         val payAmount = payAmountString.toDouble()
 
                         // Add the payAmount to the total payment amount
@@ -88,8 +88,8 @@ class DashboardFragment : Fragment() {
                                 override fun onDataChange(snapshot: DataSnapshot) {
                     // Iterate over all payments with the given campaignID
                     for (itemSnapshot in snapshot.children) {
-//                        val payAmountString = itemSnapshot.child("payAmount").value.toString()
-                        val payAmountString = "24000"
+                        val payAmountString = itemSnapshot.child("payAmount").value.toString()
+//                        val payAmountString = "24000"
                         val payAmount = payAmountString.toDouble()
 
                         // Add the payAmount to the total payment amount

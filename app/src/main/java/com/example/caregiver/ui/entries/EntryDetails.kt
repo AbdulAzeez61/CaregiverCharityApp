@@ -77,7 +77,7 @@ class EntryDetails : AppCompatActivity() {
 
 
                     binding.tvProgress.text =
-                        "Rs.${totalPaymentAmount.roundToInt()} raised"
+                        " raised Rs.${totalPaymentAmount.roundToInt()}"
 
                     // Display the total payment amount for the given campaignID
                     Log.d(

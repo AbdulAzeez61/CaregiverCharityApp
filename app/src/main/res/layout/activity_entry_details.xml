@@ -36,13 +36,13 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="15dp"
                 >
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="From Rs.40,000.00 raised Rs.2580.00"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/primary_red"
-                                    android:textSize="16sp" />
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="From Rs.40,000.00 raised Rs.2580.00"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="@color/primary_red"-->
+<!--                                    android:textSize="16sp" />-->
             </LinearLayout>
 
 
@@ -56,12 +56,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="From "
+                    android:text="From Rs."
                     android:textStyle="bold"
                     android:textColor="@color/primary_red"
                     android:textSize="16sp" />
-
-
+                <TextView
+                    android:id="@+id/entryGoal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Goal"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_red"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvProgress"
                     android:layout_width="wrap_content"
@@ -71,14 +77,7 @@
                     android:textColor="@color/primary_red"
                     android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/entryGoal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Goal"
-                    android:textStyle="bold"
-                    android:textColor="@color/primary_red"
-                    android:textSize="16sp" />
+
 
             </LinearLayout>
 
@@ -144,7 +143,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Closing Date"
+                    android:text="Closing Date "
                     android:textColor= "@color/black"
                     android:textStyle="bold"
                     android:textSize="16sp" />
