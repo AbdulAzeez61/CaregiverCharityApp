@@ -26,11 +26,11 @@ class LoginUnitTest {
     fun setUp() {
         MockitoAnnotations.openMocks(this)
         login = Login(firebaseAuth, object : LogInListener {
-            override fun logInSuccess(email: String?, password: String?) {
+            override fun logInSuccess(email: String, password: String) {
                 // success scenario
             }
 
-            override fun logInFailure(exception: Exception?, email: String?, password: String?) {
+            override fun logInFailure(exception: Exception?, email: String, password: String) {
                 // failure scenario
             }
         })
