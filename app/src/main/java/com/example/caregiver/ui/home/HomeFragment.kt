@@ -1,4 +1,4 @@
-package com.example.caregiver.ui.model.home
+package com.example.caregiver.ui.home
 
 import android.os.Bundle
 import android.util.Log

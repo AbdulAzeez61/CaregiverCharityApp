@@ -1,4 +1,4 @@
-package com.example.caregiver.ui.model.home
+package com.example.caregiver.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
