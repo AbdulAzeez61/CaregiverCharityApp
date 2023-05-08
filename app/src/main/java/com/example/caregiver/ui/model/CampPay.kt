@@ -6,5 +6,6 @@ data class CampPay(
     val payAmount: String? = null,
     val payType: String? = null,
     val userID: String? = null,
-    val CreatorID: String? = null
+    val CreatorID: String? = null,
+    val username: String? = null
 )

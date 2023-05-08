@@ -58,6 +58,10 @@ class EntryDetails : AppCompatActivity() {
             binding.entryType.visibility = View.GONE
         }
 
+//        if(EntryData.userId == user?.uid){
+//            binding.DonateButton.isEnabled = false
+//        }
+
         val campaignID = EntryData?.entryKey //hardcode
         var totalPaymentAmount = 0.0
 

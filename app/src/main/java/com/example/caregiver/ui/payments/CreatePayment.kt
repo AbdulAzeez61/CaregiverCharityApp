@@ -37,6 +37,7 @@ class CreatePayment : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         var user = firebaseAuth.currentUser
         userId = user?.uid
+        var username = user?.displayName
 
         val entryData = intent.getParcelableExtra<EntryData>("entrydata")
         var paymentType: String? = null
@@ -75,7 +76,7 @@ class CreatePayment : AppCompatActivity() {
                 binding.monthly.visibility = View.GONE
                 binding.onetime.visibility = View.GONE
                 binding.tvType.visibility = View.GONE
-                paymentType = "One Time"
+                //paymentType = "One Time"
             }
         }
 
@@ -140,8 +141,9 @@ class CreatePayment : AppCompatActivity() {
             }
 
 
-            val cpays = CampPay(payID, campaignID, payamount, paymentType, userId, entryData!!.userId)
-            Log.d("CreatePayment","This is the data+${cpays.toString()}")
+            val cpays =
+                CampPay(payID, campaignID, payamount, paymentType, userId, entryData!!.userId,username)
+            Log.d("CreatePayment", "This is the data+${cpays.toString()}")
             databaseReference.child(payID).setValue(cpays).addOnSuccessListener {
 
                 binding.createAmount.text?.clear()
@@ -160,7 +162,6 @@ class CreatePayment : AppCompatActivity() {
             val intent = Intent(this, ReadPayments::class.java)
             intent.putExtra("entrydata", entryData)
             startActivity(intent)
-
         }
     }
 }

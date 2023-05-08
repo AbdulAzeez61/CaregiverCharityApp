@@ -88,9 +88,11 @@ class ReadPayments : AppCompatActivity() {
                         totalPaymentAmount += payAmount
                     }
 
-
-                    paymView.text =
-                        "Total payment amount for campaign $campaignID: $totalPaymentAmount"
+                    if(entryData?.entryType =="") {
+                        paymView.text ="Total payment amount for fundraiser ${entryData.entryTitle}: Rs.$totalPaymentAmount"
+                    }else{
+                        paymView.text ="Total payment amount for campaign ${entryData?.entryTitle}: Rs.$totalPaymentAmount"
+                    }
 
                     // Display the total payment amount for the given campaignID
                     Log.d(

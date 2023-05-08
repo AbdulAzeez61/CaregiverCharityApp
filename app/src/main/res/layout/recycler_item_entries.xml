@@ -92,6 +92,14 @@
             android:layout_marginTop="35dp"
             android:layout_toEndOf="@id/recEntryImage"
             android:text="Remove" />
+        <Button
+            android:id="@+id/ReadPayments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/updateCampaign"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/recEntryImage"
+            android:text="Donations" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

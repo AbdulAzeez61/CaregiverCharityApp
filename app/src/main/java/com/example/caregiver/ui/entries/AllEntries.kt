@@ -62,24 +62,6 @@ class AllEntries : AppCompatActivity() {
                 dialog.dismiss()
             }
         })
-
-//        eventListener = databaseReference!!.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                dataList.clear()
-//                for (itemSnapshot in snapshot.children) {
-//                    val dataClass = itemSnapshot.getValue(EntryData::class.java)
-//                    if (dataClass != null) {
-//                        dataList.add(dataClass)
-//                    }
-//                }
-//                adapter.notifyDataSetChanged()
-//                dialog.dismiss()
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                dialog.dismiss()
-//            }
-//        })
     }
 
 

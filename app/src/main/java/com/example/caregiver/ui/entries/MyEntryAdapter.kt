@@ -2,7 +2,6 @@ package com.example.caregiver.ui.entries
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.caregiver.R
 import com.example.caregiver.ui.model.EntryData
+import com.example.caregiver.ui.payments.ReadPayments
 import com.google.firebase.database.FirebaseDatabase
 
 class MyEntryAdapter(private val context: Context, private var dataList: List<EntryData>) :
@@ -55,6 +55,12 @@ class MyEntryAdapter(private val context: Context, private var dataList: List<En
                 databaseReference.child(key).removeValue()
             }
         }
+
+        holder.donationsButton.setOnClickListener {
+            val intent = Intent(context, ReadPayments::class.java)
+            intent.putExtra("entrydata", dataList[position])
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -72,6 +78,7 @@ class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val updateButton: Button
     val viewCampaignButton: Button
     val removeButton: Button
+    val donationsButton: Button
 
     init {
         recEntryImage = itemView.findViewById(R.id.recEntryImage)
@@ -83,5 +90,6 @@ class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         updateButton = itemView.findViewById(R.id.updateCampaign)
         viewCampaignButton = itemView.findViewById(R.id.detailCampaign)
         removeButton = itemView.findViewById(R.id.deleteCampaign)
+        donationsButton = itemView.findViewById(R.id.ReadPayments)
     }
 }
