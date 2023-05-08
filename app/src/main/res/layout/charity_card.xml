@@ -77,13 +77,14 @@
                 android:layout_weight="1" />
 
 
-            <TextView
+            <Button
+                android:id="@+id/DonateButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Donate"
-                android:textColor="#45b6fe"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
 
         </LinearLayout>

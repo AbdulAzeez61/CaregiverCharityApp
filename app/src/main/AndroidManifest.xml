@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Caregiver"
         tools:targetApi="31">
         <activity
+            android:name=".ui.payments.AllPayments"
+            android:exported="false" />
+        <activity
             android:name=".Verify_Phone"
             android:exported="false" />
         <activity

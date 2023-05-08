@@ -182,15 +182,15 @@
                 android:textSize="14sp"
                 app:cornerRadius="6dp" />
 
-            <Button
-                android:id="@+id/readButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#E12424"
-                android:padding="12sp"
-                android:text="My Payments"
-                android:textSize="14sp"
-                app:cornerRadius="6dp" />
+<!--            <Button-->
+<!--                android:id="@+id/readButton"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="#E12424"-->
+<!--                android:padding="12sp"-->
+<!--                android:text="My Payments"-->
+<!--                android:textSize="14sp"-->
+<!--                app:cornerRadius="6dp" />-->
 
         </LinearLayout>
 

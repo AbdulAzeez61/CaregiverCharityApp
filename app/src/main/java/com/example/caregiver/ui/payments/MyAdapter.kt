@@ -1,5 +1,6 @@
 package com.example.caregiver.ui.payments
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.caregiver.R
 import com.example.caregiver.ui.model.CampPay
 
-class MyAdapter(private val context: ReadPayments, private val dataList: List<CampPay>) :
+class MyAdapter(private val context: Context, private val dataList: List<CampPay>) :
     RecyclerView.Adapter<MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View =

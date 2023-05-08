@@ -190,6 +190,7 @@
                     android:layout_margin="4dp"
                     android:backgroundTint="@color/primary_red"
                     android:layout_marginBottom="0dp"
+                    android:id="@+id/ReadPayments"
                     android:text="Payment History" />
 
 
