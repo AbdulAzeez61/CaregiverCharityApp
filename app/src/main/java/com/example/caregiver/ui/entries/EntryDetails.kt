@@ -19,18 +19,14 @@ import com.example.caregiver.databinding.ActivityEntryDetailsBinding
 import com.example.caregiver.ui.model.EntryData
 import com.example.caregiver.ui.payments.CreatePayment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import kotlin.math.roundToInt
 
 class EntryDetails : AppCompatActivity() {
 
     private lateinit var binding: ActivityEntryDetailsBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var databaseReference:DatabaseReference
+    private lateinit var databaseReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,27 +44,28 @@ class EntryDetails : AppCompatActivity() {
             binding.entryDesc.text = EntryData.entryDescription
             binding.entryclosingdate.text = EntryData.entryClosingDate
             binding.entryGoal.text = EntryData.entryGoal
+            binding.username.text = EntryData.username
+
             val viewPager = findViewById<ViewPager>(R.id.viewPager)
             val adapter = ImagePagerAdapter(this, EntryData.entryImages)
             viewPager.adapter = adapter
-            binding.username.text= user!!.displayName
-
         }
-        if(EntryData!!.entryType==""){
+
+        if (EntryData!!.entryType == "") {
             binding.entryType.visibility = View.GONE
         }
 
-//        if(EntryData.userId == user?.uid){
-//            binding.DonateButton.isEnabled = false
-//        }
+        if (EntryData.userId == user?.uid) {
+            binding.DonateButton.isEnabled = false
+        }
 
-        val campaignID = EntryData?.entryKey //hardcode
+        val campaignID = EntryData.entryKey //hardcode
         var totalPaymentAmount = 0.0
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Payment")
 
-        databaseReference?.orderByChild("cid")?.equalTo(campaignID)
-            ?.addListenerForSingleValueEvent(object : ValueEventListener {
+        databaseReference.orderByChild("cid")?.equalTo(campaignID)
+            ?.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     // Iterate over all payments with the given campaignID
                     for (itemSnapshot in snapshot.children) {
@@ -80,8 +77,7 @@ class EntryDetails : AppCompatActivity() {
                     }
 
 
-                    binding.tvProgress.text =
-                        " raised Rs.${totalPaymentAmount.roundToInt()}"
+                    binding.tvProgress.text = " raised Rs.${totalPaymentAmount.roundToInt()}"
 
                     // Display the total payment amount for the given campaignID
                     Log.d(
@@ -100,9 +96,9 @@ class EntryDetails : AppCompatActivity() {
             intent.putExtra("entrydata", EntryData)
             this.startActivity(intent)
         }
-        binding.username.setOnClickListener{
-            val intent = Intent(this,AllEntriesByUserName::class.java)
-            intent.putExtra("entrydata",EntryData)
+        binding.username.setOnClickListener {
+            val intent = Intent(this, AllEntriesByUserName::class.java)
+            intent.putExtra("entrydata", EntryData)
             this.startActivity(intent)
         }
 

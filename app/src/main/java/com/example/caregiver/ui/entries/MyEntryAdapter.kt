@@ -27,8 +27,6 @@ class MyEntryAdapter(private val context: Context, private var dataList: List<En
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         if (dataList[position].entryImages.isNotEmpty()) {
             Glide.with(context).load(dataList[position].entryImages[0]).into(holder.recEntryImage)
-        } else {
-
         }
         holder.recEntryTitle.text = dataList[position].entryTitle
         holder.recEntryGoal.text = dataList[position].entryGoal

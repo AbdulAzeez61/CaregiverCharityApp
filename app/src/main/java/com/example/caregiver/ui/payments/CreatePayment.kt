@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import com.example.caregiver.R
 import com.example.caregiver.databinding.ActivityCreatePaymentBinding
+import com.example.caregiver.ui.entries.EntryDetails
 import com.example.caregiver.ui.model.CampPay
 import com.example.caregiver.ui.model.EntryData
 import com.google.firebase.auth.FirebaseAuth
@@ -150,6 +151,8 @@ class CreatePayment : AppCompatActivity() {
 
 
                 Toast.makeText(this, "Payment success", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, EntryDetails::class.java)
+                startActivity(intent)
                 finish()
             }.addOnFailureListener {
                 Toast.makeText(this, "Failure", Toast.LENGTH_SHORT).show()
@@ -157,11 +160,11 @@ class CreatePayment : AppCompatActivity() {
 
         }
 
-        binding.readButton.setOnClickListener {
-
-            val intent = Intent(this, ReadPayments::class.java)
-            intent.putExtra("entrydata", entryData)
-            startActivity(intent)
-        }
+//        binding.readButton.setOnClickListener {
+//
+//            val intent = Intent(this, ReadPayments::class.java)
+//            intent.putExtra("entrydata", entryData)
+//            startActivity(intent)
+//        }
     }
 }

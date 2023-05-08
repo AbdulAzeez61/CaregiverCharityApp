@@ -35,7 +35,7 @@ class CreateEntry : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private var userId: String? = null
     private lateinit var databaseReference: DatabaseReference
-
+    var username: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +45,7 @@ class CreateEntry : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         var user = firebaseAuth.currentUser
         userId = user?.uid
+        username = user?.displayName
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId!!)
 
@@ -57,6 +58,7 @@ class CreateEntry : AppCompatActivity() {
                     binding.SetUp.text = "Set up Fundraiser"
                     binding.campaignType.visibility = View.GONE
                     binding.createButton.text = "Set up Fundraiser"
+
                 }
             }
 
@@ -149,7 +151,8 @@ class CreateEntry : AppCompatActivity() {
             entryClosingDate,
             entryDescription,
             entryImages = uploadedimageUrls,
-            entryGoal
+            entryGoal,
+            username
         )
         newEntryRef.setValue(entry).addOnSuccessListener {
 //            binding.campaignTitle.text.clear()

@@ -89,7 +89,7 @@
                     android:id="@+id/entryGoal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Goal "
+                    android:text=" Goal "
                     android:textColor="@color/primary_red"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -97,7 +97,7 @@
                     android:id="@+id/tvProgress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="Rs.0"
                     android:textColor="@color/primary_red"
                     android:textSize="16sp"
                     android:textStyle="bold" />

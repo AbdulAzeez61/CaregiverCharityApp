@@ -11,6 +11,7 @@ data class EntryData(
     val entryClosingDate: String? = null,
     val entryDescription: String? = null,
     val entryImages: MutableList<String> = mutableListOf(),
-    val entryGoal: String? = null
+    val entryGoal: String? = null,
+    val username:String?=null
 ) : Parcelable
 
