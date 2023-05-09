@@ -98,6 +98,8 @@
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/secondry_black"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 

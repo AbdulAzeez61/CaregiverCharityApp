@@ -140,6 +140,12 @@
 
         </RadioGroup>
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select your birthday" />
+
         <DatePicker
             android:id="@+id/birthDay"
             android:layout_width="match_parent"
@@ -147,11 +153,6 @@
             android:calendarViewShown="false"
             android:datePickerMode="spinner"
             android:spinnersShown="true" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select your birthday" />
 
 
         <Button

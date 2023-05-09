@@ -14,7 +14,6 @@ import com.example.caregiver.databinding.FragmentDashboardBinding
 import com.example.caregiver.ui.account.Account
 import com.example.caregiver.ui.entries.AllEntries
 import com.example.caregiver.ui.entries.CreateEntry
-import com.example.caregiver.ui.payments.AllPayments
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlin.math.roundToInt
@@ -57,7 +56,7 @@ class DashboardFragment : Fragment() {
 
         databaseReference.orderByChild("userID").equalTo(userId)
             .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
+                                override fun onDataChange(snapshot: DataSnapshot) {
                     // Iterate over all payments with the given campaignID
                     for (itemSnapshot in snapshot.children) {
                         val payAmountString = itemSnapshot.child("payAmount").value.toString()
@@ -86,7 +85,7 @@ class DashboardFragment : Fragment() {
 
         databaseReference.orderByChild("creatorID").equalTo(userId)
             ?.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
+                                override fun onDataChange(snapshot: DataSnapshot) {
                     // Iterate over all payments with the given campaignID
                     for (itemSnapshot in snapshot.children) {
                         val payAmountString = itemSnapshot.child("payAmount").value.toString()
@@ -95,6 +94,7 @@ class DashboardFragment : Fragment() {
 
                         // Add the payAmount to the total payment amount
                         totalRaisedAmount += payAmount
+                        Log.d("DashboardFragment", "This is the raised amiunt inside $totalRaisedAmount")
                     }
 
 
@@ -122,8 +122,8 @@ class DashboardFragment : Fragment() {
                     val lastName = dataSnapshot.child("lastName").getValue(String::class.java)
 
                     val fullName = firstName + " " + lastName
-                    binding.username.text = fullName
-                    binding.email.text = email
+                    binding.username.setText(fullName)
+                    binding.email.setText(email)
                 }
             }
 
@@ -157,11 +157,6 @@ class DashboardFragment : Fragment() {
             val intent = Intent(activity, AllEntries::class.java)
             startActivity(intent)
         }
-        binding.ReadPayments.setOnClickListener {
-            val intent = Intent(activity, AllPayments::class.java)
-            startActivity(intent)
-        }
-
     }
 
     override fun onDestroyView() {

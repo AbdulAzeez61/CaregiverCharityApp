@@ -16,7 +16,7 @@ import com.example.caregiver.ui.entries.EntryDetails
 import com.example.caregiver.ui.model.EntryData
 
 
-class CardAdapter(private val context: Context, private val mList: List<EntryData>) :
+class CardAdapter(private val context: Context, private var mList: List<EntryData>) :
     RecyclerView.Adapter<CardAdapter.ViewHolder>() {
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -54,6 +54,11 @@ class CardAdapter(private val context: Context, private val mList: List<EntryDat
 //            .into(imageView)
     }
 
+    fun searchProjects(searchList: List<EntryData>) {
+        mList = searchList
+        notifyDataSetChanged()
+    }
+
 
     // return the number of the items in the list
     override fun getItemCount(): Int {
@@ -65,6 +70,6 @@ class CardAdapter(private val context: Context, private val mList: List<EntryDat
         val imageView: ImageView = itemView.findViewById(R.id.image)
         val textView: TextView = itemView.findViewById(R.id.header)
         val description: TextView = itemView.findViewById(R.id.description)
-        val donate: Button = itemView.findViewById(R.id.DonateButton)
+        val donate: TextView = itemView.findViewById(R.id.DonateButton)
     }
 }
