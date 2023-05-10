@@ -14,6 +14,7 @@ import com.example.caregiver.databinding.FragmentDashboardBinding
 import com.example.caregiver.ui.account.Account
 import com.example.caregiver.ui.entries.AllEntries
 import com.example.caregiver.ui.entries.CreateEntry
+import com.example.caregiver.ui.payments.AllPayments
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlin.math.roundToInt
@@ -152,6 +153,10 @@ class DashboardFragment : Fragment() {
 
         binding.projects.setOnClickListener {
             val intent = Intent(activity, AllEntries::class.java)
+            startActivity(intent)
+        }
+        binding.ReadPayments.setOnClickListener {
+            val intent = Intent(activity, AllPayments::class.java)
             startActivity(intent)
         }
     }
