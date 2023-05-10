@@ -24,21 +24,29 @@
             android:paddingRight="10dp"
             android:src="@drawable/twotone_north_east_24" />
 
-        <TextView
-            android:id="@+id/recType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Type"
-            android:textColor="@color/secondry_black"
-            android:textSize="18sp"/>
 
-        <TextView
-            android:id="@+id/Username"
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Username"
-            android:textColor="@color/secondry_black"
-            android:textSize="18sp" />
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/recType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type"
+                android:textColor="@color/secondry_black"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/Username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Username"
+                android:textColor="#3B5998"
+                android:textSize="18sp" />
+        </LinearLayout>
+
 
         <View
             android:layout_width="0dp"

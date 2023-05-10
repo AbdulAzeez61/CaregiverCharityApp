@@ -31,6 +31,18 @@ class Register : AppCompatActivity() {
                 startActivity(intent)
             }
 
+            if(email.isEmpty()) {
+                binding.email.setError("Please enter your email")
+            }
+
+            if (password.isEmpty()){
+                binding.password.setError("Please enter your password")
+            }
+
+            if (rePassword.isEmpty()){
+                binding.rePassword.setError("Please retype your password")
+            }
+
 
             if ( email.isNotEmpty() || password.isNotEmpty() || rePassword.isNotEmpty() ) {
                 if(password == rePassword) {
@@ -45,6 +57,7 @@ class Register : AppCompatActivity() {
                     }
                 } else {
                     Toast.makeText(this, "Password is not matching!!", Toast.LENGTH_SHORT).show()
+                    binding.rePassword.setError("Password are not matching")
                 }
             } else {
                 Toast.makeText(this, "All the fields are required!!", Toast.LENGTH_SHORT).show()

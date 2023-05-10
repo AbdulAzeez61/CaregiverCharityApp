@@ -101,6 +101,11 @@ class Account : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.verifyPhone.setOnClickListener {
+            val intent = Intent( this, VerifyPhone::class.java)
+            startActivity(intent)
+        }
+
         binding.devcAccount.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             val inflater = layoutInflater
@@ -134,6 +139,7 @@ class Account : AppCompatActivity() {
 
                                     } else {
                                         // An error occurred while re-authenticating the user
+                                       Toast.makeText(context, "An error occurred while reauth your account", Toast.LENGTH_SHORT).show()
                                     }
                                 }
                             }

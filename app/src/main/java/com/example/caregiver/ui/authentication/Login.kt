@@ -29,10 +29,21 @@ class Login : AppCompatActivity() {
             val email = binding.email.text.toString()
             val password = binding.password.text.toString()
 
+
+            if(email.isEmpty()) {
+               binding.email.setError("Please enter your email")
+            }
+
+            if (password.isEmpty()){
+                binding.password.setError("Please enter your password")
+            }
+
+
             fun isValidEmail(email: String): Boolean {
                 val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"
                 return email.matches(emailRegex.toRegex())
             }
+
 
             if (email.isNotEmpty() || password.isNotEmpty()) {
 
@@ -52,10 +63,14 @@ class Login : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "All the fields are required", Toast.LENGTH_SHORT).show()
             }
+        }
 
-
+        binding.forgotPassword.setOnClickListener {
+            val intent = Intent(this, ForgotPassword::class.java)
+            startActivity(intent)
         }
     }
+
 
     override fun onStart() {
         super.onStart()
