@@ -34,6 +34,7 @@ class CreateEntry : AppCompatActivity() {
     private val REQUEST_CODE_PICK_IMAGES = 7
     private lateinit var firebaseAuth: FirebaseAuth
     private var userId: String? = null
+    private var profileImg: String? = null
     private lateinit var databaseReference: DatabaseReference
     var username: String? = null
 
@@ -46,6 +47,7 @@ class CreateEntry : AppCompatActivity() {
         var user = firebaseAuth.currentUser
         userId = user?.uid
         username = user?.displayName
+        profileImg = user?.photoUrl.toString()
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId!!)
 
@@ -152,8 +154,13 @@ class CreateEntry : AppCompatActivity() {
             entryDescription,
             entryImages = uploadedimageUrls,
             entryGoal,
-            username
+            username,
+            profileImg,
         )
+        newEntryRef.setValue(entry).addOnSuccessListener {
+            newEntryRef.child("createdTime").setValue(ServerValue.TIMESTAMP)
+        }
+
         newEntryRef.setValue(entry).addOnSuccessListener {
 //            binding.campaignTitle.text.clear()
 //            binding.campaignType.text?.clear()

@@ -41,7 +41,15 @@ class CardAdapter(private val context: Context, private var mList: List<EntryDat
         }
         holder.textView.text = mList[position].entryTitle
         holder.description.text = mList[position].entryDescription
+//        holder.createdTime.text = mList[position].relativeTime
+        holder.username.text = mList[position].username
 //            Glide.with(context).load(mList[position].entryImages[0]).into(holder.imageView)
+        if (mList[position].profileImg != null) {
+            Glide.with(context)
+                .load(mList[position].profileImg)
+                .into(holder.profileImg)
+        }
+
 
         holder.donate.setOnClickListener {
             val intent = Intent(context, EntryDetails::class.java)
@@ -68,6 +76,9 @@ class CardAdapter(private val context: Context, private var mList: List<EntryDat
     // Holds the views for adding it to image and text
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.image)
+        val profileImg: ImageView = itemView.findViewById(R.id.profileImg)
+        val createdTime: TextView = itemView.findViewById(R.id.createdTime)
+        val username: TextView = itemView.findViewById(R.id.username)
         val textView: TextView = itemView.findViewById(R.id.header)
         val description: TextView = itemView.findViewById(R.id.description)
         val donate: TextView = itemView.findViewById(R.id.DonateButton)

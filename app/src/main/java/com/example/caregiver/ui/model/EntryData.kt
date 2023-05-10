@@ -12,6 +12,9 @@ data class EntryData(
     val entryDescription: String? = null,
     val entryImages: MutableList<String> = mutableListOf(),
     val entryGoal: String? = null,
-    val username:String?=null
+    val username:String?=null,
+    val profileImg:String?=null,
+    val createdTime: Long? = null,
+    var relativeTime: String? = null
 ) : Parcelable
 

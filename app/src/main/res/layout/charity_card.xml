@@ -3,22 +3,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="0dp"
-    android:layout_marginBottom="10dp">
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/profileimg"
+                app:civ_border_color="#E42424"
+                app:civ_border_width="2dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Help a cild to go to school"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/secondry_black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/createdTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Help a cild to go to school"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/secondry_black"
+                    android:textSize="16dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
         <!-- Media -->
         <ImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="194dp"
-            android:scaleType="centerCrop"
             android:contentDescription="Help a cild to go to school"
-            />
+            android:scaleType="centerCrop" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,11 +78,11 @@
                 android:id="@+id/header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/secondry_black"
-                android:textStyle="bold"
                 android:text="Help a cild to go to school"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                />
+                android:textColor="@color/secondry_black"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
@@ -43,8 +90,7 @@
                 android:layout_marginTop="16dp"
                 android:text="loream ipsum text lori cod deatula bello hengo lorenzo leet coloranmo"
                 android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
-                />
+                android:textColor="?android:attr/textColorSecondary" />
 
 
         </LinearLayout>
@@ -53,23 +99,24 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:paddingBottom="16dp"
-            android:orientation="horizontal">
+            android:paddingBottom="16dp">
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/like_prev"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/like_prev" />
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/share" />
+
 
             <View
                 android:layout_width="0dp"
@@ -81,12 +128,11 @@
                 android:id="@+id/DonateButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Donate"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:textColor="#3B5998"
                 android:background="@android:color/transparent"
-                />
+                android:text="Donate"
+                android:textColor="#3B5998"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>

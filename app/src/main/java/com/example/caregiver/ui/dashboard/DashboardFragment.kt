@@ -61,20 +61,18 @@ class DashboardFragment : Fragment() {
                     for (itemSnapshot in snapshot.children) {
                         val payAmountString = itemSnapshot.child("payAmount").value.toString()
 //                        val payAmountString = "24000"
-                        val payAmount = payAmountString.toDouble()
 
-                        // Add the payAmount to the total payment amount
-                        totalPaymentAmount += payAmount
+                        if (payAmountString.isNotEmpty()) {
+                            val payAmount = payAmountString.toDouble()
+                            totalPaymentAmount += payAmount
+                        }
                     }
 
 
                     binding.contribution.text =
                         "Rs.${totalPaymentAmount.roundToInt()}"
                 }
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//                    Log.d("DashboardFragment", "Snapshot: $snapshot")
-//                    // ...
-//                }
+
 
                 override fun onCancelled(error: DatabaseError) {
                     Log.e(ContentValues.TAG, "Failed to read value.", error.toException())
@@ -96,7 +94,6 @@ class DashboardFragment : Fragment() {
                         totalRaisedAmount += payAmount
                         Log.d("DashboardFragment", "This is the raised amiunt inside $totalRaisedAmount")
                     }
-
 
                     binding.raised.text =
                         "Rs.${totalRaisedAmount.roundToInt()}"

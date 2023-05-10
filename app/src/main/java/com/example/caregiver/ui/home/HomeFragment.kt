@@ -1,6 +1,7 @@
 package com.example.caregiver.ui.home
 
 import android.os.Bundle
+import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,12 +49,17 @@ class HomeFragment : Fragment() {
 
         databaseReference!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+
                 dataList.clear()
                 for (itemSnapshot in snapshot.children) {
                     val dataClass = itemSnapshot.getValue(EntryData::class.java)
+//
+//                    val relativeTime = DateUtils.getRelativeTimeSpanString(dataClass?.createdTime ?: 0, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS)
                     if (dataClass != null) {
+//                        dataClass.relativeTime = relativeTime.toString()
                         dataList.add(dataClass)
                     }
+
                 }
                 adapter?.searchProjects(dataList)
                 adapter?.notifyDataSetChanged()
