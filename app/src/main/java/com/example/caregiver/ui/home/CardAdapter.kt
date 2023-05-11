@@ -2,6 +2,7 @@ package com.example.caregiver.ui.home
 
 import android.content.Context
 import android.content.Intent
+import android.media.Image
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.caregiver.R
@@ -82,5 +84,16 @@ class CardAdapter(private val context: Context, private var mList: List<EntryDat
         val textView: TextView = itemView.findViewById(R.id.header)
         val description: TextView = itemView.findViewById(R.id.description)
         val donate: TextView = itemView.findViewById(R.id.DonateButton)
+        val share: ImageView = itemView.findViewById(R.id.share)
+
+        init {
+            share.setOnClickListener {
+                val postText = "Join with caregiver and help the world"
+                val shareIntent = Intent(Intent.ACTION_SEND)
+                shareIntent.type = "text/plain"
+                shareIntent.putExtra(Intent.EXTRA_TEXT, postText)
+                itemView.context.startActivity(Intent.createChooser(shareIntent, "Share post via"))
+            }
+        }
     }
 }

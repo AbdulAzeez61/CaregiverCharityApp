@@ -84,6 +84,8 @@ class HomeFragment : Fragment() {
                 return true
             }
         })
+
+
         return root
 
     }

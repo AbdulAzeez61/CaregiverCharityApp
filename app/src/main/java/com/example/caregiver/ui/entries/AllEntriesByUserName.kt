@@ -1,6 +1,8 @@
 package com.example.caregiver.ui.entries
 
 import android.content.ContentValues
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,30 +21,27 @@ class AllEntriesByUserName : AppCompatActivity() {
         setContentView(binding.root)
 
         val entryData = intent.getParcelableExtra<EntryData>("entrydata")
-
-            binding.username.text = entryData?.userId
-
-
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(entryData?.userId ?: "defaultUserId" ?: "01")
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(entryData?.userId ?: "defaultUserId" ?: "1")
 
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user = dataSnapshot.getValue(User::class.java)
                 val usernmae = user?.firstName + " " + user?.lastName
-                val phoneNo = user?.phoneNo
-                val birthday = user?.birthDay
-                val gender = user?.gender
+                val phoneNo = "Mobile " +user?.phoneNo
+                val birthday = "Birthday " + user?.birthDay
+                val gender = "Gender " + user?.gender
+
                 binding.username.setText(usernmae)
                 binding.mobile.setText(phoneNo)
                 binding.birthday.setText(birthday)
-                binding.birthday.setText(gender)
+                binding.gender.setText(gender)
 
-//
-//                when (user?.gender) {
-//                    "Male" -> binding.genderSelect.check(R.id.male)
-//                    "Female" -> binding.genderSelect.check(R.id.female)
-//                    "Not Preferred" -> binding.genderSelect.check(R.id.invalid)
-//                }
+
+                binding.btnCall.setOnClickListener {
+                    val phoneNumber = "tel:${user?.phoneNo}" // Use the phone number from the database
+                    val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse(phoneNumber))
+                    startActivity(dialIntent)
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

@@ -22,7 +22,6 @@ data class Login(
                 }
             })
     }
-
 }
 //interface LogInListener {
 //    fun logInSuccess(email: String, password: String)
