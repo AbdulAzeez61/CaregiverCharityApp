@@ -3,11 +3,14 @@ package com.example.caregiver.ui.entries
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +20,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
@@ -184,12 +188,48 @@ class UpdateEntries : AppCompatActivity() {
                     // Update the database with the new values
                     if (updates.isNotEmpty()) {
                         entryRef.updateChildren(updates).addOnSuccessListener {
-                            binding.entryTitle.text?.clear()
-                            binding.entryType.text?.clear()
-                            binding.entryclosingdate.text?.clear()
-                            binding.entryDesc.text?.clear()
-                            binding.entryGoal.text?.clear()
-                            binding.viewPager.removeAllViews()
+//                            binding.entryTitle.text?.clear()
+//                            binding.entryType.text?.clear()
+//                            binding.entryclosingdate.text?.clear()
+//                            binding.entryDesc.text?.clear()
+//                            binding.entryGoal.text?.clear()
+//                            binding.viewPager.removeAllViews()
+
+                            // Create a notification manager
+                            val notificationManager =
+                                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+                            // Create a notification channel (required for API level 26 and above)
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                val channel = NotificationChannel(
+                                    "my_channel_id",
+                                    "My Channel",
+                                    NotificationManager.IMPORTANCE_DEFAULT
+                                )
+                                notificationManager.createNotificationChannel(channel)
+                            }
+
+
+                            // Build the notification
+                            val builder =
+                                NotificationCompat.Builder(this@UpdateEntries, "my_channel_id")
+                                    .setSmallIcon(R.drawable.ic_launcher_foreground)
+//                                    .setContentTitle("Project Updated")
+
+                            if (entryData.entryType == "") {
+                                builder.setContentText("Fundraiser updated $entryTitle")
+                            } else {
+                                builder.setContentText("Campaign updated $entryTitle")
+                            }
+//                                .setContentText("Project updated $entryTitle")
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+                            notificationManager.notify(0, builder.build())
+
+
+
+
+
                             Toast.makeText(this@UpdateEntries, "Updated", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@UpdateEntries, AllEntries::class.java)
                             startActivity(intent)
