@@ -2,9 +2,12 @@ package com.example.caregiver.ui.entries
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +18,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.example.caregiver.R
@@ -162,6 +166,32 @@ class CreateEntry : AppCompatActivity() {
         }
 
         newEntryRef.setValue(entry).addOnSuccessListener {
+
+
+            // Create a notification manager
+            val notificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+            // Create a notification channel (required for API level 26 and above)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val channel = NotificationChannel(
+                    "my_channel_id", "My Channel", NotificationManager.IMPORTANCE_DEFAULT
+                )
+                notificationManager.createNotificationChannel(channel)
+            }
+
+
+            // Build the notification
+            val builder = NotificationCompat.Builder(this, "my_channel_id")
+                .setSmallIcon(R.drawable.ic_launcher_foreground).setContentTitle("Project Success")
+            if (entryType == "") {
+                builder.setContentText("Fundraiser created $entryTitle")
+            } else {
+                builder.setContentText("Campaign created $entryTitle")
+            }
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+            notificationManager.notify(0, builder.build())
 //            binding.campaignTitle.text.clear()
 //            binding.campaignType.text?.clear()
 //            binding.campaignclosingdate.text.clear()
