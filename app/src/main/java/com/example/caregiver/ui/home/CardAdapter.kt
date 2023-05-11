@@ -46,7 +46,14 @@ class CardAdapter(private val context: Context, private var mList: List<EntryDat
         }
 
         holder.textView.text = mList[position].entryTitle
-        holder.description.text = mList[position].entryDescription
+        val maxDescriptionLength = 300
+        val descriptionText = mList[position].entryDescription
+        if (descriptionText?.length!! > maxDescriptionLength) {
+            holder.description.text = descriptionText?.substring(0, maxDescriptionLength) + "..."
+        } else {
+            holder.description.text = descriptionText
+        }
+
 //        holder.createdTime.text = mList[position].relativeTime
         holder.username.text = mList[position].username
 //            Glide.with(context).load(mList[position].entryImages[0]).into(holder.imageView)
