@@ -98,11 +98,12 @@ class EntryDetails : AppCompatActivity() {
         binding.DonateButton.setOnClickListener {
             val intent = Intent(this, CreatePayment::class.java)
             intent.putExtra("entrydata", EntryData)
+            intent.putExtra("profileImg", EntryData.profileImg)
             this.startActivity(intent)
         }
         binding.username.setOnClickListener {
             val intent = Intent(this, AllEntriesByUserName::class.java)
-            intent.putExtra("profileImg", EntryData.profileImg)
+            intent.putExtra("entrydata", EntryData)
             this.startActivity(intent)
         }
 

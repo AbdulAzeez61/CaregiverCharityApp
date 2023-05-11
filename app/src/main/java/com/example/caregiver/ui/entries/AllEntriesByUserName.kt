@@ -25,6 +25,8 @@ class AllEntriesByUserName : AppCompatActivity() {
 
         val entryData = intent.getParcelableExtra<EntryData>("entrydata")
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(entryData?.userId ?: "defaultUserId" ?: "1")
+//
+        val profileImg = entryData?.profileImg
 
 
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -41,9 +43,9 @@ class AllEntriesByUserName : AppCompatActivity() {
                 binding.birthday.setText(birthday)
                 binding.gender.setText(gender)
                 binding.type.setText(profileType)
-                val profileImg = intent.getStringExtra("profileImg")
 
 
+//                val profileImg = intent.getStringExtra("profileImg")
                 if (profileImg != null) {
                     Glide.with(this@AllEntriesByUserName).load(profileImg).into(binding.profileImg)
                 }
