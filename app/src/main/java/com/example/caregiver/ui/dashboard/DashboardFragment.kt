@@ -55,6 +55,9 @@ class DashboardFragment : Fragment() {
         var totalPaymentAmount = 0.0
         databaseReference = FirebaseDatabase.getInstance().getReference("Payment")
 
+        /**
+         * get the user data
+         */
         databaseReference.orderByChild("userID").equalTo(userId)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -82,6 +85,9 @@ class DashboardFragment : Fragment() {
         var totalRaisedAmount = 0.0
         Log.d("DashboardFragment", "This is the raised amiunt $totalRaisedAmount")
 
+        /**
+         * get the transaction details
+         */
         databaseReference.orderByChild("creatorID").equalTo(userId)
             ?.addListenerForSingleValueEvent(object : ValueEventListener {
                                 override fun onDataChange(snapshot: DataSnapshot) {

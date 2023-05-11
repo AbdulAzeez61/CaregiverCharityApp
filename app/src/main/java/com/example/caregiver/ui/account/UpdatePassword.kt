@@ -15,7 +15,9 @@ class UpdatePassword : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUpdatePasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        /**
+         * get firebase authentication user
+         */
         firebaseAuth = FirebaseAuth.getInstance()
         val user = firebaseAuth?.currentUser
         val email = user?.email ?: ""
@@ -25,6 +27,9 @@ class UpdatePassword : AppCompatActivity() {
             val oldPassword = binding.oldPassword.text.toString()
             val newPassword = binding.newPassword.text.toString()
 
+            /**
+             * update the password
+             */
             val credential = EmailAuthProvider.getCredential(email, oldPassword)
 
             if (oldPassword.isNotEmpty() && newPassword.isNotEmpty()) {

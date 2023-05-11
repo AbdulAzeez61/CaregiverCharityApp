@@ -54,6 +54,7 @@
         android:text="@string/signup"
         android:textStyle="bold"
         android:textSize="24sp"
+        android:layout_marginBottom="20sp"
         android:gravity="center"
         android:textColor="@color/primary_blue"
         />

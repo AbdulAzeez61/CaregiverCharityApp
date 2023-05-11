@@ -46,6 +46,10 @@ class EntryDetails : AppCompatActivity() {
             binding.entryGoal.text = EntryData.entryGoal
             binding.username.text = EntryData.username
 
+            if (EntryData.profileImg != null) {
+                Glide.with(this).load(EntryData.profileImg).into(binding.profileImg)
+            }
+
             val viewPager = findViewById<ViewPager>(R.id.viewPager)
             val adapter = ImagePagerAdapter(this, EntryData.entryImages)
             viewPager.adapter = adapter
@@ -98,7 +102,7 @@ class EntryDetails : AppCompatActivity() {
         }
         binding.username.setOnClickListener {
             val intent = Intent(this, AllEntriesByUserName::class.java)
-            intent.putExtra("entrydata", EntryData)
+            intent.putExtra("profileImg", EntryData.profileImg)
             this.startActivity(intent)
         }
 

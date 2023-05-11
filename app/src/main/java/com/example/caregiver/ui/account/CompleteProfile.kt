@@ -30,6 +30,9 @@ class CompleteProfile : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
+        /**
+         * get firebase authentication user data
+         */
         val user = firebaseAuth.currentUser
         val userId = user?.uid
         var countryCodePicker = binding.countryCode
@@ -39,8 +42,9 @@ class CompleteProfile : AppCompatActivity() {
         lateinit var gender:String
         lateinit var birthDay:String
 
-
-
+        /**
+         * selectio user options
+         */
         val options = arrayOf("Organization", "Individual")
 
         val adapter = ArrayAdapter(
@@ -64,6 +68,9 @@ class CompleteProfile : AppCompatActivity() {
             gender = radioButton.text.toString()
         }
 
+        /**
+         * actions after user complete setup
+         */
         binding.btnComplete.setOnClickListener{
 
             var firstName = binding.firstName.text.toString()
@@ -89,6 +96,9 @@ class CompleteProfile : AppCompatActivity() {
 
             var user = User(userId, phoneNo, firstName, lastName, birthDay, gender, role)
 
+            /**
+             * clear fields
+             */
             if (userId != null) {
                 databaseReference.child(userId).setValue(user).addOnCompleteListener{
                     if (it.isSuccessful){

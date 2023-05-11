@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Welcome Back"
-        android:textColor="#0029FF"
+        android:textColor="#3354ff"
         android:textStyle= "bold"
         android:layout_marginBottom="10sp"
         android:textSize="32sp"

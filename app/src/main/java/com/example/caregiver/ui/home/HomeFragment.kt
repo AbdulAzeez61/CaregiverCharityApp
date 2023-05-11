@@ -38,6 +38,9 @@ class HomeFragment : Fragment() {
         databaseReference = FirebaseDatabase.getInstance().getReference("Entry Info")
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+        /**
+         * ge the each charity programm datas
+         */
         var dataList = ArrayList<EntryData>()
 
         var adapter = context?.let { CardAdapter(it, dataList) }
@@ -61,6 +64,9 @@ class HomeFragment : Fragment() {
                     }
 
                 }
+                /**
+                 * change the adapter data
+                 */
                 adapter?.searchProjects(dataList)
                 adapter?.notifyDataSetChanged()
             }
@@ -70,6 +76,9 @@ class HomeFragment : Fragment() {
         })
 
 
+        /**
+         * implement the search
+         */
         val searchView = binding.search
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

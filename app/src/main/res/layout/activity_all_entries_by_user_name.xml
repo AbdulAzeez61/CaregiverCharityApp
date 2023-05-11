@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:fillViewport="true"
     tools:context=".ui.entries.AllEntriesByUserName">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -31,14 +33,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="@drawable/side_nav_bar"
-                android:padding="15dp"
-                >
+                android:orientation="vertical"
+                android:padding="15dp">
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profileImg"
                     android:layout_width="96dp"
@@ -52,9 +53,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="15dp"
-                >
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="5dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/username"
@@ -63,64 +71,94 @@
                         android:text="Username"
                         android:textColor="@color/secondry_black"
                         android:textSize="28sp"
-                       />
+                        android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/btn_call"
-                    android:layout_width="wrap_content"
-                    android:padding="6sp"
-                    android:text="Give A Call"
-                    android:backgroundTint="@color/primary_blue"
-                    app:cornerRadius="6dp"
-                    android:layout_marginBottom="20dp"
+                    <Button
+                        android:id="@+id/btn_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:backgroundTint="@color/primary_blue"
+                        android:padding="8sp"
+                        android:text="Give A Call"
+                        app:cornerRadius="4dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="#f2f2f2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
 
                     <TextView
-                        android:id="@+id/email"
-                        android:text="email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:textStyle="bold"
                         android:layout_marginBottom="5dp"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/mobile"
-                        android:text="email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="5dp"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/birthday"
-                        android:text="email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="5dp"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/gender"
-                        android:text="email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:layout_marginBottom="5dp"
+                        android:fontWeight="700"
+                        android:text="More Details"
                         android:textSize="18sp"
-                        />
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingLeft="8dp">
+
+                        <TextView
+                            android:id="@+id/mobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:fontWeight="700"
+                            android:text="email"
+                            android:textColor="@color/secondry_black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="email"
+                            android:textColor="@color/secondry_black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/birthday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="email"
+                            android:textColor="@color/secondry_black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="email"
+                            android:textColor="@color/secondry_black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
-
-
-
 
 
         </LinearLayout>

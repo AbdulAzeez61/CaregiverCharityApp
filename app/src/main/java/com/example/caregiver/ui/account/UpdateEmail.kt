@@ -18,12 +18,17 @@ class UpdateEmail : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
+        /**
+         * get firebase authentication user
+         */
         val user = firebaseAuth?.currentUser
         val email = user?.email?: ""
 
         //set the current value
         binding.email.setText(email)
-
+        /**
+         * update user email
+         */
         binding.btnUpdate.setOnClickListener {
             val email = binding.email.text.toString()
 

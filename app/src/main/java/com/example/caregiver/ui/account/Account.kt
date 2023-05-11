@@ -33,6 +33,10 @@ class Account : AppCompatActivity() {
 
     val storageRef = FirebaseStorage.getInstance().reference
 
+
+    /**
+     *
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -56,6 +60,9 @@ class Account : AppCompatActivity() {
 
         userRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                /**
+                 * get the user profile details
+                 */
                 val firstName = dataSnapshot.child("firstName").getValue(String::class.java)
                 val lastName = dataSnapshot.child("lastName").getValue(String::class.java)
 
@@ -72,6 +79,9 @@ class Account : AppCompatActivity() {
         binding.email.setText(email)
 
         binding.editProfilePic.setOnClickListener {
+            /**
+             * access media options
+             */
             // Create an AlertDialog to let the user choose between camera and gallery
             val options = arrayOf<CharSequence>("Take Photo", "Choose from Gallery", "Cancel")
             val builder = AlertDialog.Builder(this)
@@ -86,26 +96,41 @@ class Account : AppCompatActivity() {
             builder.show()
         }
 
+        /**
+         * change email button
+         */
         binding.updateEmail.setOnClickListener {
             val intent = Intent(this, UpdateEmail::class.java)
             startActivity(intent)
         }
 
+        /**
+         * update password
+         */
         binding.updatePassword.setOnClickListener {
             val intent = Intent(this, UpdatePassword::class.java)
             startActivity(intent)
         }
 
+        /**
+         * update profile info
+         */
         binding.updateProfileInfo.setOnClickListener {
             val intent = Intent(this, UpdateProfileInfo::class.java)
             startActivity(intent)
         }
 
+        /**
+         * verify phone
+         */
         binding.verifyPhone.setOnClickListener {
             val intent = Intent( this, VerifyPhone::class.java)
             startActivity(intent)
         }
 
+        /**
+         * deactivate account
+         */
         binding.devcAccount.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             val inflater = layoutInflater

@@ -27,6 +27,9 @@ class UpdateProfileInfo : AppCompatActivity() {
         binding = ActivityUpdateProfileInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        /**
+         * get firebase authentication user
+         */
         firebaseAuth = FirebaseAuth.getInstance()
         var user = firebaseAuth?.currentUser
         val userId = user?.uid
@@ -34,6 +37,9 @@ class UpdateProfileInfo : AppCompatActivity() {
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId!!)
 
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            /**
+             * get the current profile information
+             */
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user = dataSnapshot.getValue(User::class.java)
 
@@ -46,6 +52,9 @@ class UpdateProfileInfo : AppCompatActivity() {
                     binding.birthDay.updateDate(birthDay[2], birthDay[0] - 1, birthDay[1])
                 }
 
+                /**
+                 * gender selections
+                 */
                 when (user?.gender) {
                     "Male" -> binding.genderSelect.check(R.id.male)
                     "Female" -> binding.genderSelect.check(R.id.female)
@@ -77,6 +86,9 @@ class UpdateProfileInfo : AppCompatActivity() {
         }
 
 
+        /**
+         * update the changes
+         */
         binding.btnUpdate.setOnClickListener {
             val firstName = binding.firstName.text.toString()
             val lastName = binding.lastName.text.toString()

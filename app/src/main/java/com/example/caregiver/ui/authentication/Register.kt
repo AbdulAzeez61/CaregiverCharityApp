@@ -31,16 +31,32 @@ class Register : AppCompatActivity() {
                 startActivity(intent)
             }
 
+            /**
+             * check email empty or not
+             */
             if(email.isEmpty()) {
                 binding.email.setError("Please enter your email")
             }
 
+            /**
+             * check password empty or not
+             */
             if (password.isEmpty()){
                 binding.password.setError("Please enter your password")
             }
 
+            /**
+             * check re password empty or not
+             */
             if (rePassword.isEmpty()){
                 binding.rePassword.setError("Please retype your password")
+            }
+
+            /**
+             * check password is strong or not
+             */
+            if (!isPasswordStrong(password)) {
+                binding.password.setError("Password is too weak. Try to add more characters")
             }
 
 
@@ -62,7 +78,14 @@ class Register : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "All the fields are required!!", Toast.LENGTH_SHORT).show()
             }
+
+
         }
+    }
+
+    fun isPasswordStrong(password: String): Boolean {
+        val regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$".toRegex()
+        return regex.matches(password)
     }
 
 }

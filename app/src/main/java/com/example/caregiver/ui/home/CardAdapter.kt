@@ -38,9 +38,13 @@ class CardAdapter(private val context: Context, private var mList: List<EntryDat
         // sets the image to the imageview from our itemHolder class
 //        holder.imageView.setImageResource(CardModel.image)
         // sets the text to the textview from our itemHolder class
+        /**
+         * ge the data set and assign to layout
+         */
         if (mList[position].entryImages.isNotEmpty()) {
             Glide.with(context).load(mList[position].entryImages[0]).into(holder.imageView)
         }
+
         holder.textView.text = mList[position].entryTitle
         holder.description.text = mList[position].entryDescription
 //        holder.createdTime.text = mList[position].relativeTime
@@ -64,6 +68,9 @@ class CardAdapter(private val context: Context, private var mList: List<EntryDat
 //            .into(imageView)
     }
 
+    /**
+     * search functions
+     */
     fun searchProjects(searchList: List<EntryData>) {
         mList = searchList
         notifyDataSetChanged()
