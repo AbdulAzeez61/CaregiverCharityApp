@@ -25,7 +25,7 @@ class AllEntriesByUserName : AppCompatActivity() {
 
         val entryData = intent.getParcelableExtra<EntryData>("entrydata")
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(entryData?.userId ?: "defaultUserId" ?: "1")
-//
+
         val profileImg = entryData?.profileImg
 
 

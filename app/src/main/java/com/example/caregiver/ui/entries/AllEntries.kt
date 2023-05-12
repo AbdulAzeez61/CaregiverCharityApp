@@ -1,18 +1,13 @@
 package com.example.caregiver.ui.entries
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.caregiver.R
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.caregiver.databinding.ActivityAllEntriesBinding
 import com.example.caregiver.ui.model.EntryData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 
 class AllEntries : AppCompatActivity() {
     var databaseReference: DatabaseReference? = null
@@ -34,17 +29,25 @@ class AllEntries : AppCompatActivity() {
 
         val dialog = builder.create()
         dialog.show()
+
+        //passing values from dataclass into arraylist
         dataList = ArrayList()
         adapter = MyEntryAdapter(this@AllEntries, dataList)
         binding.recyclerView.adapter = adapter
+
+        //firebase reference
         databaseReference =
             FirebaseDatabase.getInstance()
                 .getReference("Entry Info")
+
         dialog.show()
+
+        //getting current user
         firebaseAuth = FirebaseAuth.getInstance()
-        var user = firebaseAuth?.currentUser
+        var user = firebaseAuth.currentUser
         val desiredUserID = user?.uid
 
+        //adding new recycler view items through dataSnapShot
         eventListener = databaseReference!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 dataList.clear()

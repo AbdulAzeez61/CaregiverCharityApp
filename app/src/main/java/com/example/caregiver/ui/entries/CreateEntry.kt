@@ -9,7 +9,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,6 +46,7 @@ class CreateEntry : AppCompatActivity() {
         binding = ActivityCreateEntryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //firebase authentication to get current user
         firebaseAuth = FirebaseAuth.getInstance()
         var user = firebaseAuth.currentUser
         userId = user?.uid
@@ -58,8 +58,8 @@ class CreateEntry : AppCompatActivity() {
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val userRole = dataSnapshot.child("role").getValue(String::class.java)
-                Log.d("CreateEntry", "Message Check Userole Is Who inside " + userRole.toString())
 
+                //hide layout and labels depending on user type
                 if (userRole != null && userRole == "Individual") {
                     binding.SetUp.text = "Set up Fundraiser"
                     binding.campaignType.visibility = View.GONE
@@ -73,7 +73,7 @@ class CreateEntry : AppCompatActivity() {
             }
         })
 
-
+        //selecting images
         binding.selectImagesButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
                 type = "image/*"
@@ -82,6 +82,7 @@ class CreateEntry : AppCompatActivity() {
             startActivityForResult(intent, REQUEST_CODE_PICK_IMAGES)
         }
 
+        //calender widget
         val myCalendar = Calendar.getInstance()
         val editText = binding.campaignclosingdate
         val date = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -91,6 +92,7 @@ class CreateEntry : AppCompatActivity() {
             updateLabel(myCalendar, editText)
         }
 
+        //onclick function for edit text to launch calender widget
         editText.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
                 this@CreateEntry,
@@ -105,10 +107,12 @@ class CreateEntry : AppCompatActivity() {
             datePickerDialog.show()
         }
 
+        //onclick event for create button
         binding.createButton.setOnClickListener {
             val storageReference = FirebaseStorage.getInstance().getReference("campaign images")
             val uploadedImageUrls = mutableListOf<Uri>()
 
+            //uploading images to firebase storage
             if (selectedImages.isNotEmpty()) {
                 val uploadTasks = mutableListOf<Task<Uri>>()
                 for (uri in selectedImages) {
@@ -124,28 +128,31 @@ class CreateEntry : AppCompatActivity() {
 
                 Tasks.whenAllSuccess<Uri>(uploadTasks).addOnSuccessListener { urls ->
                     uploadedImageUrls.addAll(urls)
-                    // Now you can access the uploadedImageUrls list and assign it to campaignImages
-                    createCampaignEntry(uploadedImageUrls)
+                    // Now can access the uploadedImageUrls list and assign it to campaignImages
+                    createNewEntry(uploadedImageUrls)
                 }
             } else {
                 // No images selected, create campaign entry with empty campaignImages list
-                createCampaignEntry(uploadedImageUrls)
+                createNewEntry(uploadedImageUrls)
             }
         }
     }
 
-    fun createCampaignEntry(campaignImages: List<Uri>) {
+    //function to create entry
+    fun createNewEntry(campaignImages: List<Uri>) {
         val entryType = binding.campaignType.text.toString()
         val entryTitle = binding.campaignTitle.text.toString()
         val entryClosingDate = binding.campaignclosingdate.text.toString()
         val entryDescription = binding.campaignDesc.text.toString()
         val entryGoal = binding.campaignGoal.text.toString()
 
+        //converting uri to string because firebase realtime doesnt support uri
         val uploadedimageUrls = mutableListOf<String>()
         for (uri in campaignImages) {
             uploadedimageUrls.add(uri.toString())
         }
 
+        //adding new entry
         databaseReference = FirebaseDatabase.getInstance().getReference("Entry Info")
         val newEntryRef = databaseReference.push()
         val entryKey = newEntryRef.key
@@ -167,7 +174,6 @@ class CreateEntry : AppCompatActivity() {
 
         newEntryRef.setValue(entry).addOnSuccessListener {
 
-
             // Create a notification manager
             val notificationManager =
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -180,24 +186,17 @@ class CreateEntry : AppCompatActivity() {
                 notificationManager.createNotificationChannel(channel)
             }
 
-
             // Build the notification
             val builder = NotificationCompat.Builder(this, "my_channel_id")
                 .setSmallIcon(R.drawable.ic_launcher_foreground).setContentTitle("Project Success")
-            if (entryType == "") {
+            (if (entryType == "") {
                 builder.setContentText("Fundraiser created $entryTitle")
             } else {
                 builder.setContentText("Campaign created $entryTitle")
-            }
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            }).priority = NotificationCompat.PRIORITY_DEFAULT
 
             notificationManager.notify(0, builder.build())
-//            binding.campaignTitle.text.clear()
-//            binding.campaignType.text?.clear()
-//            binding.campaignclosingdate.text.clear()
-//            binding.campaignDesc.text.clear()
-//            binding.campaignGoal.text.clear()
-//            binding.viewPager.removeAllViews()
+
             Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this@CreateEntry, AllEntries::class.java)
@@ -208,6 +207,7 @@ class CreateEntry : AppCompatActivity() {
         }
     }
 
+    //function to update date when it is selected on calender widget
     private fun updateLabel(myCalendar: Calendar, editText: EditText) {
         val myFormat = "dd/MM/yy"
         val sdf = SimpleDateFormat(myFormat, Locale.ENGLISH)
@@ -216,6 +216,7 @@ class CreateEntry : AppCompatActivity() {
 
     private val selectedImages = mutableListOf<Uri>()
 
+    //selecting images and displaying in viewpager
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -240,6 +241,7 @@ class CreateEntry : AppCompatActivity() {
         viewPager.adapter = adapter
     }
 
+    //code for displaying images in viewpager and to remove images from viewpager
     class ImageAdapter(
         private val context: Context,
         private val images: List<Uri>,

@@ -36,8 +36,10 @@ class EntryDetails : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         var user = firebaseAuth.currentUser
 
+        //get intent from other pages
         val EntryData = intent.getParcelableExtra<EntryData>("entrydata")
 
+        //fill page with info from dataclass
         if (EntryData != null) {
             binding.entryTitle.text = EntryData.entryTitle
             binding.entryType.text = EntryData.entryType
@@ -63,6 +65,7 @@ class EntryDetails : AppCompatActivity() {
             binding.DonateButton.isEnabled = false
         }
 
+        //show current raised amount
         val campaignID = EntryData.entryKey //hardcode
         var totalPaymentAmount = 0.0
 
@@ -109,6 +112,7 @@ class EntryDetails : AppCompatActivity() {
 
     }
 
+    //display images in viewpager
     class ImagePagerAdapter(
         private val context: Context, private val imageUris: MutableList<String>
     ) : PagerAdapter() {

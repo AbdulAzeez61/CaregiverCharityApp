@@ -48,7 +48,7 @@ class UpdateEntries : AppCompatActivity() {
         binding = ActivityUpdateEntriesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        //firebase authentication to get current user
         firebaseAuth = FirebaseAuth.getInstance()
         var user = firebaseAuth.currentUser
         val userId = user?.uid
@@ -57,8 +57,9 @@ class UpdateEntries : AppCompatActivity() {
 
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val userRole = dataSnapshot.child("role").getValue(String::class.java)
-                // Do something with userRole
+                val userRole = dataSnapshot.child("role")
+                    .getValue(String::class.java)                //hide layout and labels depending on user type
+                //hide layout and labels depending on user type
                 if (userRole != null && userRole == "Individual") {
                     binding.updatePageTitle.text = "Revise Fundraiser"
 
@@ -72,6 +73,7 @@ class UpdateEntries : AppCompatActivity() {
             }
         })
 
+        //slecting images
         binding.selectImagesButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
                 type = "image/*"
@@ -82,6 +84,7 @@ class UpdateEntries : AppCompatActivity() {
 
         val entryData = intent.getParcelableExtra<EntryData>("entrydata")
 
+        //filling editext with data to be updated
         if (entryData != null) {
             binding.entryTitle.setText(entryData.entryTitle)
             binding.entryDesc.setText(entryData.entryDescription)
@@ -90,7 +93,7 @@ class UpdateEntries : AppCompatActivity() {
             binding.entryclosingdate.setText(entryData.entryClosingDate)
         }
 
-
+        //calender widget
         val myCalendar = Calendar.getInstance()
         val editText = binding.entryclosingdate
         val date = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -100,6 +103,7 @@ class UpdateEntries : AppCompatActivity() {
             updateLabel(myCalendar, editText)
         }
 
+        //onclick function to launch calender widget
         editText.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
                 this@UpdateEntries,
@@ -113,14 +117,19 @@ class UpdateEntries : AppCompatActivity() {
             datePickerDialog.datePicker.minDate = minDate.timeInMillis
             datePickerDialog.show()
         }
+
+        //show images in viewpager
         val viewPager = findViewById<ViewPager>(R.id.viewPager)
         adapter = ImagePagerAdapter(this, entryData!!.entryImages)
         viewPager.adapter = adapter
 
+        //onclick function for revise button
         binding.reviseButton.setOnClickListener {
             val remoteImages =
                 entryData.entryImages.filter { it.startsWith("https://") }.toMutableList()
             val storageReference = FirebaseStorage.getInstance().getReference("campaign images")
+
+            //upload new images if any
             if (localImages.isNotEmpty()) {
                 val uploadTasks = mutableListOf<Task<Uri>>()
                 for (uri in localImages) {
@@ -139,16 +148,17 @@ class UpdateEntries : AppCompatActivity() {
                         remoteImages.add(url.toString())
                     }
                     // Now you can access the uploadedImageUrls list and assign it to campaignImages
-                    updateCampaignEntry(remoteImages)
+                    updateEntry(remoteImages)
                 }
             } else {
                 // No images selected, create campaign entry with empty campaignImages list
-                updateCampaignEntry(remoteImages)
+                updateEntry(remoteImages)
             }
         }
     }
 
-    fun updateCampaignEntry(remoteImages: MutableList<String>) {
+    //function to update entry
+    fun updateEntry(remoteImages: MutableList<String>) {
         val entryData = intent.getParcelableExtra<EntryData>("entrydata")
         databaseReference = FirebaseDatabase.getInstance().getReference("Entry Info")
         val entryRef = databaseReference.child(entryData!!.entryKey!!)
@@ -158,11 +168,12 @@ class UpdateEntries : AppCompatActivity() {
         val entryDescription = binding.entryDesc.text.toString()
         val entryGoal = binding.entryGoal.text.toString()
 
+        //checking for differences between dataclass and values in uodate entries page. if different then updating
         entryRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val entryData = snapshot.getValue(EntryData::class.java)
                 if (entryData != null) {
-                    // Update the properties of the campaign entry that have changed
+                    // Update the properties of the entry that have changed
                     val updates = mutableMapOf<String, Any>()
                     if (entryData.entryTitle != entryTitle) {
                         updates["entryTitle"] = entryTitle
@@ -179,21 +190,12 @@ class UpdateEntries : AppCompatActivity() {
                     if (entryData.entryGoal != entryGoal) {
                         updates["entryGoal"] = entryGoal
                     }
-//                    if (entryData.entryType != entryType) {
-//                        updates["entryType"] = entryType
-//                    }
                     if (remoteImages != entryData.entryImages) {
                         updates["entryImages"] = remoteImages
                     }
                     // Update the database with the new values
                     if (updates.isNotEmpty()) {
                         entryRef.updateChildren(updates).addOnSuccessListener {
-//                            binding.entryTitle.text?.clear()
-//                            binding.entryType.text?.clear()
-//                            binding.entryclosingdate.text?.clear()
-//                            binding.entryDesc.text?.clear()
-//                            binding.entryGoal.text?.clear()
-//                            binding.viewPager.removeAllViews()
 
                             // Create a notification manager
                             val notificationManager =
@@ -216,19 +218,13 @@ class UpdateEntries : AppCompatActivity() {
                                     .setSmallIcon(R.drawable.ic_launcher_foreground)
 //                                    .setContentTitle("Project Updated")
 
-                            if (entryData.entryType == "") {
+                            (if (entryData.entryType == "") {
                                 builder.setContentText("Fundraiser updated $entryTitle")
                             } else {
                                 builder.setContentText("Campaign updated $entryTitle")
-                            }
-//                                .setContentText("Project updated $entryTitle")
-                                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                            }).priority = NotificationCompat.PRIORITY_DEFAULT
 
                             notificationManager.notify(0, builder.build())
-
-
-
-
 
                             Toast.makeText(this@UpdateEntries, "Updated", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@UpdateEntries, AllEntries::class.java)
@@ -247,13 +243,14 @@ class UpdateEntries : AppCompatActivity() {
         })
     }
 
-
+    //updating date based on selected value in widget
     private fun updateLabel(myCalendar: Calendar, editText: EditText) {
         val myFormat = "dd/MM/yy"
         val sdf = SimpleDateFormat(myFormat, Locale.ENGLISH)
         editText.setText(sdf.format(myCalendar.time))
     }
 
+    //show images in viewpager
     class ImagePagerAdapter(
         private val context: Context,
         private val images: MutableList<String>,
@@ -263,19 +260,17 @@ class UpdateEntries : AppCompatActivity() {
 
         override fun isViewFromObject(view: View, obj: Any): Boolean = view == obj
 
+        //add new images
         fun addImage(uri: Uri) {
             images.add(uri.toString())
             notifyDataSetChanged()
         }
 
+        //remove images
         fun removeImage(position: Int) {
             images.removeAt(position)
             notifyDataSetChanged()
         }
-
-//        fun getImages(): MutableList<String> {
-//            return images
-//        }
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val view = LayoutInflater.from(context).inflate(R.layout.image_item, container, false)
@@ -301,6 +296,7 @@ class UpdateEntries : AppCompatActivity() {
         }
     }
 
+    //function to select new images when updating
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 

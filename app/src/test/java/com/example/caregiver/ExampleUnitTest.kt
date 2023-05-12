@@ -60,7 +60,7 @@ class ExampleUnitTest {
         binding.campaignDesc.setText(entryDescription)
         binding.campaignGoal.setText(entryGoal)
 
-        myClass.createCampaignEntry(campaignImages)
+        myClass.createNewEntry(campaignImages)
 
         val databaseReference = FirebaseDatabase.getInstance().getReference("Entry Info")
 
@@ -131,7 +131,7 @@ class ExampleUnitTest {
         binding.entryDesc.setText(entryDescription)
         binding.entryGoal.setText(entryGoal)
 
-        myClass.updateCampaignEntry(remoteImages)
+        myClass.updateEntry(remoteImages)
 
         val databaseReference = FirebaseDatabase.getInstance().getReference("Entry Info")
 

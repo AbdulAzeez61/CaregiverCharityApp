@@ -24,6 +24,7 @@ class MyEntryAdapter(private val context: Context, private var dataList: List<En
         return MyViewHolder(view)
     }
 
+    //loading details in to recycler view item
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         if (dataList[position].entryImages.isNotEmpty()) {
             Glide.with(context).load(dataList[position].entryImages[0]).into(holder.recEntryImage)
@@ -33,19 +34,21 @@ class MyEntryAdapter(private val context: Context, private var dataList: List<En
         holder.recEntryClosingDate.text = dataList[position].entryClosingDate
         holder.recEntryType.text = dataList[position].entryType
 
-        holder.viewCampaignButton.setOnClickListener {
+        //button to view detailed entry info
+        holder.viewButton.setOnClickListener {
             val intent = Intent(context, EntryDetails::class.java)
             intent.putExtra("entrydata", dataList[position])
             context.startActivity(intent)
         }
 
+        //button to revise
         holder.updateButton.setOnClickListener {
             val intent = Intent(context, UpdateEntries::class.java)
             intent.putExtra("entrydata", dataList[position])
             context.startActivity(intent)
         }
 
-
+        //button to delete entries from DB
         holder.removeButton.setOnClickListener {
             val databaseReference = FirebaseDatabase.getInstance().getReference("Entry Info")
             val key = dataList[position].entryKey
@@ -54,6 +57,7 @@ class MyEntryAdapter(private val context: Context, private var dataList: List<En
             }
         }
 
+        //button to view all donations recieved for entry
         holder.donationsButton.setOnClickListener {
             val intent = Intent(context, ReadPayments::class.java)
             intent.putExtra("entrydata", dataList[position])
@@ -72,9 +76,8 @@ class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var recEntryGoal: TextView
     var recEntryClosingDate: TextView
     var recEntryType: TextView
-    var recCardCampaign: CardView
     val updateButton: Button
-    val viewCampaignButton: Button
+    val viewButton: Button
     val removeButton: Button
     val donationsButton: Button
 
@@ -84,9 +87,8 @@ class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         recEntryTitle = itemView.findViewById(R.id.recEntryTitle)
         recEntryGoal = itemView.findViewById(R.id.recEntryGoal)
         recEntryClosingDate = itemView.findViewById(R.id.recEntryClosingDate)
-        recCardCampaign = itemView.findViewById(R.id.recCardCampaign)
         updateButton = itemView.findViewById(R.id.updateCampaign)
-        viewCampaignButton = itemView.findViewById(R.id.detailCampaign)
+        viewButton = itemView.findViewById(R.id.detailCampaign)
         removeButton = itemView.findViewById(R.id.deleteCampaign)
         donationsButton = itemView.findViewById(R.id.ReadPayments)
     }
